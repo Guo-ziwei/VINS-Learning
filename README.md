@@ -1,6 +1,10 @@
 # Vins Course
 [ ![Build Status](doc/README-English-yellow.svg) ](README_EN.md)
 
+**修改者**：GaryG
+
+源于VIO第二期的代码，做了一些加速改进
+
 **作者**：贺一家，高翔，崔华坤，赵松
 
 **描述**：

@@ -366,14 +366,12 @@ void System::ProcessBackEnd() {
             estimator.processImage(image, img_msg->header);
 
             if (estimator.solver_flag == Estimator::SolverFlag::NON_LINEAR) {
-                Vector3d p_wi;
-                Quaterniond q_wi;
-                q_wi = Quaterniond(estimator.Rs[WINDOW_SIZE]);
-                p_wi = estimator.Ps[WINDOW_SIZE];
+                Vector3d p_wi(estimator.Ps[WINDOW_SIZE]);
+                Quaterniond q_wi(estimator.Rs[WINDOW_SIZE]);
                 vPath_to_draw.push_back(p_wi);
                 double dStamp = estimator.Headers[WINDOW_SIZE];
-                // cout << "1 BackEnd processImage dt: " << fixed << t_processImage.toc() << " stamp: " <<  dStamp << "
-                // p_wi: " << p_wi.transpose() << endl; ofs_pose << fixed << dStamp << " " << p_wi.transpose() << " " <<
+                cout << "1 BackEnd processImage dt: " << fixed << t_processImage.toc() << endl;
+                // ofs_pose << fixed << dStamp << " " << p_wi.transpose() << " " <<
                 // q_wi.coeffs().transpose() << endl;
                 ofs_pose << fixed << dStamp << " " << p_wi.x() << " " << p_wi.y() << " " << p_wi.z() << " " << q_wi.x()
                          << " " << q_wi.y() << " " << q_wi.z() << " " << q_wi.w() << endl;

@@ -4,29 +4,24 @@
 #include <opencv2/core/core.hpp>
 #include <string>
 
-#include "ceres/rotation.h"
 #include "Camera.h"
+#include "ceres/rotation.h"
 
-namespace camodocal
-{
+namespace camodocal {
 
 /**
  * C. Mei, and P. Rives, Single View Point Omnidirectional Camera Calibration
  * from Planar Grids, ICRA 2007
  */
 
-class CataCamera: public Camera
-{
-public:
-    class Parameters: public Camera::Parameters
-    {
-    public:
+class CataCamera : public Camera {
+  public:
+    class Parameters : public Camera::Parameters {
+      public:
         Parameters();
-        Parameters(const std::string& cameraName,
-                   int w, int h,
-                   double xi,
-                   double k1, double k2, double p1, double p2,
-                   double gamma1, double gamma2, double u0, double v0);
+        Parameters(
+            const std::string& cameraName, int w, int h, double xi, double k1, double k2, double p1, double p2,
+            double gamma1, double gamma2, double u0, double v0);
 
         double& xi(void);
         double& k1(void);
@@ -52,9 +47,9 @@ public:
         void writeToYamlFile(const std::string& filename) const;
 
         Parameters& operator=(const Parameters& other);
-        friend std::ostream& operator<< (std::ostream& out, const Parameters& params);
+        friend std::ostream& operator<<(std::ostream& out, const Parameters& params);
 
-    private:
+      private:
         double m_xi;
         double m_k1;
         double m_k2;
@@ -69,15 +64,14 @@ public:
     CataCamera();
 
     /**
-    * \brief Constructor from the projection model parameters
-    */
-    CataCamera(const std::string& cameraName,
-               int imageWidth, int imageHeight,
-               double xi, double k1, double k2, double p1, double p2,
-               double gamma1, double gamma2, double u0, double v0);
+     * \brief Constructor from the projection model parameters
+     */
+    CataCamera(
+        const std::string& cameraName, int imageWidth, int imageHeight, double xi, double k1, double k2, double p1,
+        double p2, double gamma1, double gamma2, double u0, double v0);
     /**
-    * \brief Constructor from the projection model parameters
-    */
+     * \brief Constructor from the projection model parameters
+     */
     CataCamera(const Parameters& params);
 
     Camera::ModelType modelType(void) const;
@@ -85,9 +79,9 @@ public:
     int imageWidth(void) const;
     int imageHeight(void) const;
 
-    void estimateIntrinsics(const cv::Size& boardSize,
-                            const std::vector< std::vector<cv::Point3f> >& objectPoints,
-                            const std::vector< std::vector<cv::Point2f> >& imagePoints);
+    void estimateIntrinsics(
+        const cv::Size& boardSize, const std::vector<std::vector<cv::Point3f> >& objectPoints,
+        const std::vector<std::vector<cv::Point2f> >& imagePoints);
 
     // Lift points from the image plane to the sphere
     void liftSphere(const Eigen::Vector2d& p, Eigen::Vector3d& P) const;
@@ -103,8 +97,7 @@ public:
 
     // Projects 3D points to the image plane (Pi function)
     // and calculates jacobian
-    void spaceToPlane(const Eigen::Vector3d& P, Eigen::Vector2d& p,
-                      Eigen::Matrix<double,2,3>& J) const;
+    void spaceToPlane(const Eigen::Vector3d& P, Eigen::Vector2d& p, Eigen::Matrix<double, 2, 3>& J) const;
     //%output p
     //%output J
 
@@ -112,23 +105,19 @@ public:
     //%output p
 
     template <typename T>
-    static void spaceToPlane(const T* const params,
-                             const T* const q, const T* const t,
-                             const Eigen::Matrix<T, 3, 1>& P,
-                             Eigen::Matrix<T, 2, 1>& p);
+    static void spaceToPlane(
+        const T* const params, const T* const q, const T* const t, const Eigen::Matrix<T, 3, 1>& P,
+        Eigen::Matrix<T, 2, 1>& p);
 
     void distortion(const Eigen::Vector2d& p_u, Eigen::Vector2d& d_u) const;
-    void distortion(const Eigen::Vector2d& p_u, Eigen::Vector2d& d_u,
-                    Eigen::Matrix2d& J) const;
+    void distortion(const Eigen::Vector2d& p_u, Eigen::Vector2d& d_u, Eigen::Matrix2d& J) const;
 
     void initUndistortMap(cv::Mat& map1, cv::Mat& map2, double fScale = 1.0) const;
-    cv::Mat initUndistortRectifyMap(cv::Mat& map1, cv::Mat& map2,
-                                    float fx = -1.0f, float fy = -1.0f,
-                                    cv::Size imageSize = cv::Size(0, 0),
-                                    float cx = -1.0f, float cy = -1.0f,
-                                    cv::Mat rmat = cv::Mat::eye(3, 3, CV_32F)) const;
+    cv::Mat initUndistortRectifyMap(
+        cv::Mat& map1, cv::Mat& map2, float fx = -1.0f, float fy = -1.0f, cv::Size imageSize = cv::Size(0, 0),
+        float cx = -1.0f, float cy = -1.0f, cv::Mat rmat = cv::Mat::eye(3, 3, CV_32F)) const;
 
-    int parameterCount(void) const;
+    size_t parameterCount(void) const;
 
     const Parameters& getParameters(void) const;
     void setParameters(const Parameters& parameters);
@@ -140,7 +129,7 @@ public:
 
     std::string parametersToString(void) const;
 
-private:
+  private:
     Parameters mParameters;
 
     double m_inv_K11, m_inv_K13, m_inv_K22, m_inv_K23;
@@ -151,12 +140,9 @@ typedef boost::shared_ptr<CataCamera> CataCameraPtr;
 typedef boost::shared_ptr<const CataCamera> CataCameraConstPtr;
 
 template <typename T>
-void
-CataCamera::spaceToPlane(const T* const params,
-                         const T* const q, const T* const t,
-                         const Eigen::Matrix<T, 3, 1>& P,
-                         Eigen::Matrix<T, 2, 1>& p)
-{
+void CataCamera::spaceToPlane(
+    const T* const params, const T* const q, const T* const t, const Eigen::Matrix<T, 3, 1>& P,
+    Eigen::Matrix<T, 2, 1>& p) {
     T P_w[3];
     P_w[0] = T(P(0));
     P_w[1] = T(P(1));
@@ -181,7 +167,7 @@ CataCamera::spaceToPlane(const T* const params,
     T p2 = params[4];
     T gamma1 = params[5];
     T gamma2 = params[6];
-    T alpha = T(0); //cameraParams.alpha();
+    T alpha = T(0);  // cameraParams.alpha();
     T u0 = params[7];
     T v0 = params[8];
 
@@ -205,6 +191,6 @@ CataCamera::spaceToPlane(const T* const params,
     p(1) = gamma2 * v + v0;
 }
 
-}
+}  // namespace camodocal
 
 #endif

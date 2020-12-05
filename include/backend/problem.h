@@ -1,6 +1,8 @@
 #ifndef MYSLAM_BACKEND_PROBLEM_H
 #define MYSLAM_BACKEND_PROBLEM_H
 
+#define USE_OPENMP
+
 #include <unordered_map>
 #include <map>
 #include <memory>
@@ -36,6 +38,11 @@ public:
         GENERIC_PROBLEM
     };
 
+    enum class SolverType {
+        LM,
+        DogLeg
+    };
+
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
 
     Problem(ProblemType problemType);
@@ -65,7 +72,7 @@ public:
      * @param iterations
      * @return
      */
-    bool Solve(int iterations = 10);
+    bool Solve(int iterations = 10, SolverType solvertype = SolverType::LM);
 
     /// 边缘化一个frame和以它为host的landmark
     bool Marginalize(std::shared_ptr<Vertex> frameVertex,
@@ -105,7 +112,7 @@ private:
 
     /// 构造大H矩阵
     void MakeHessian();
-
+    void MakeHessianAc();
     /// schur求解SBA
     void SchurSBA();
 
@@ -140,7 +147,6 @@ private:
     /// Levenberg
     /// 计算LM算法的初始Lambda
     void ComputeLambdaInitLM();
-
     /// Hessian 对角线加上或者减去  Lambda
     void AddLambdatoHessianLM();
 
@@ -148,16 +154,24 @@ private:
 
     /// LM 算法中用于判断 Lambda 在上次迭代中是否可以，以及Lambda怎么缩放
     bool IsGoodStepInLM();
+    // DogLeg
+    void ComputaInitDogleg();
+    void SolveLinearSystemGaussian();
+    void ComputerDoglegStep();
+    void UpdateStatesDogleg();
+    // Dogleg 算法中用于判断 step 在上次迭代中是否可以, 以及更新 radius_
+    bool IsGoodStepInDogLeg();
 
     /// PCG 迭代线性求解器
-    VecX PCGSolver(const MatXX &A, const VecX &b, int maxIter);
-
+    VecX PCGSolver(const MatXX &A, const VecX &b, int maxIter = -1);
+    VecX PCGSolverTest(const MatXX &A, const VecX &b, int maxIter = -1);
     double currentLambda_;
     double currentChi_;
     double stopThresholdLM_;    // LM 迭代退出阈值条件
     double ni_;                 //控制 Lambda 缩放大小
 
     ProblemType problemType_;
+    SolverType solvertype_;
 
     /// 整个信息矩阵
     MatXX Hessian_;
@@ -181,7 +195,8 @@ private:
     VecX b_pp_;
     MatXX H_ll_;
     VecX b_ll_;
-
+    VecX gradient_ ;
+    VecX h_sd_;
     /// all vertices
     HashVertex verticies_;
 
@@ -204,6 +219,10 @@ private:
     bool bDebug = false;
     double t_hessian_cost_ = 0.0;
     double t_PCGsovle_cost_ = 0.0;
+    double radius_; // DogLeg Trust region
+    double xigma_1, xigma_2, xigma_3;
+    double alpha, beta;
+    VecX dogleg_step_;
 };
 
 }

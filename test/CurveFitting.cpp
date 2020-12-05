@@ -49,7 +49,7 @@ public:
 
 int main()
 {
-    double a=1.0, b=2.0, c=1.0;         // 真实参数值
+    double a=12, b=2.8, c=5.6;         // 真实参数值
     int N = 100;                          // 数据点
     double w_sigma= 1.;                 // 噪声Sigma值
 
@@ -86,12 +86,12 @@ int main()
 
     std::cout<<"\nTest CurveFitting start..."<<std::endl;
     /// 使用 LM 求解
-    problem.Solve(30);
+    problem.Solve(30, myslam::backend::Problem::SolverType::DogLeg);
 
     std::cout << "-------After optimization, we got these parameters :" << std::endl;
     std::cout << vertex->Parameters().transpose() << std::endl;
     std::cout << "-------ground truth: " << std::endl;
-    std::cout << "1.0,  2.0,  1.0" << std::endl;
+    std::cout << "2.0,  2.0,  15.0" << std::endl;
 
     // std
     return 0;

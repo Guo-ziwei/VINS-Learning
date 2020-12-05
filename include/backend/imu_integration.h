@@ -1,13 +1,13 @@
 #pragma once
 
-#include "eigen_types.h"
 #include "../thirdparty/Sophus/sophus/se3.hpp"
+#include "eigen_types.h"
 
 namespace myslam {
 namespace backend {
 
 class IMUIntegration {
-public:
+  public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
 
     /**
@@ -15,7 +15,7 @@ public:
      * @param ba
      * @param bg
      */
-    explicit IMUIntegration(const Vec3 &ba, const Vec3 &bg) : ba_(ba), bg_(bg) {
+    explicit IMUIntegration(const Vec3& ba, const Vec3& bg) : bg_(bg), ba_(ba) {
         const Mat33 i3 = Mat33::Identity();
         noise_measurement_.block<3, 3>(0, 0) = (acc_noise_ * acc_noise_) * i3;
         noise_measurement_.block<3, 3>(3, 3) = (gyr_noise_ * gyr_noise_) * i3;
@@ -31,7 +31,7 @@ public:
      * @param acc
      * @param gyr_1
      */
-    void Propagate(double dt, const Vec3 &acc, const Vec3 &gyr);
+    void Propagate(double dt, const Vec3& acc, const Vec3& gyr);
 
     /**
      * according to pre-integration, when bias is updated, pre-integration should also be updated using
@@ -40,11 +40,15 @@ public:
      * @param delta_ba
      * @param delta_bg
      */
-    void Correct(const Vec3 &delta_ba, const Vec3 &delta_bg);
+    void Correct(const Vec3& delta_ba, const Vec3& delta_bg);
 
-    void SetBiasG(const Vec3 &bg) { bg_ = bg; }
+    void SetBiasG(const Vec3& bg) {
+        bg_ = bg;
+    }
 
-    void SetBiasA(const Vec3 &ba) { ba_ = ba; }
+    void SetBiasA(const Vec3& ba) {
+        ba_ = ba;
+    }
 
     /// if bias is update by a large value, redo the propagation
     void Repropagate();
@@ -79,7 +83,7 @@ public:
      * @param _dp_dbg
      * @param _dp_dba
      */
-    void GetJacobians(Mat33 &dr_dbg, Mat33 &dv_dbg, Mat33 &dv_dba, Mat33 &dp_dbg, Mat33 &dp_dba) const {
+    void GetJacobians(Mat33& dr_dbg, Mat33& dv_dbg, Mat33& dv_dba, Mat33& dp_dbg, Mat33& dp_dba) const {
         dr_dbg = dr_dbg_;
         dv_dbg = dv_dbg_;
         dv_dba = dv_dba_;
@@ -87,7 +91,9 @@ public:
         dp_dba = dp_dba_;
     }
 
-    Mat33 GetDrDbg() const { return dr_dbg_; }
+    Mat33 GetDrDbg() const {
+        return dr_dbg_;
+    }
 
     /// get propagated noise covariance
     Mat99 GetCovarianceMeasurement() const {
@@ -110,19 +116,25 @@ public:
      * @param delta_v
      * @param delta_p
      */
-    void GetDeltaRVP(Sophus::SO3d &delta_r, Vec3 &delta_v, Vec3 &delta_p) const {
+    void GetDeltaRVP(Sophus::SO3d& delta_r, Vec3& delta_v, Vec3& delta_p) const {
         delta_r = delta_r_;
         delta_v = delta_v_;
         delta_p = delta_p_;
     }
 
-    Vec3 GetDv() const { return delta_v_; }
+    Vec3 GetDv() const {
+        return delta_v_;
+    }
 
-    Vec3 GetDp() const { return delta_p_; }
+    Vec3 GetDp() const {
+        return delta_p_;
+    }
 
-    Sophus::SO3d GetDr() const { return delta_r_; }
+    Sophus::SO3d GetDr() const {
+        return delta_r_;
+    }
 
-private:
+  private:
     // raw data from IMU
     std::vector<double> dt_buf_;
     VecVec3 acc_buf_;
@@ -130,14 +142,14 @@ private:
 
     // pre-integrated IMU measurements
     double sum_dt_ = 0;
-    Sophus::SO3d delta_r_;  // dR
-    Vec3 delta_v_ = Vec3::Zero();    // dv
-    Vec3 delta_p_ = Vec3::Zero();    // dp
+    Sophus::SO3d delta_r_;         // dR
+    Vec3 delta_v_ = Vec3::Zero();  // dv
+    Vec3 delta_p_ = Vec3::Zero();  // dp
 
     // gravity, biases
     static Vec3 gravity_;
-    Vec3 bg_ = Vec3::Zero();    // initial bias of gyro
-    Vec3 ba_ = Vec3::Zero();    // initial bias of accelerator
+    Vec3 bg_ = Vec3::Zero();  // initial bias of gyro
+    Vec3 ba_ = Vec3::Zero();  // initial bias of accelerator
 
     // jacobian w.r.t bg and ba
     Mat33 dr_dbg_ = Mat33::Zero();
@@ -166,6 +178,5 @@ private:
     constexpr static double gyr_random_walk_ = 2.0e-5;
 };
 
-}
-}
-
+}  // namespace backend
+}  // namespace myslam

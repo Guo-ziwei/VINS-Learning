@@ -1,0 +1,60 @@
+Loaded 4001 stamps and poses from: imu_pose.txt
+Loaded 305 stamps and poses from: pose_output.txt
+Synchronizing trajectories...
+Found 305 of max. 4001 possible matching timestamps between...
+	imu_pose.txt
+and:	pose_output.txt
+..with max. time diff.: 0.01 (s) and time offset: 0.0 (s).
+--------------------------------------------------------------------------------
+Aligning using Umeyama's method...
+Rotation of alignment:
+[[ 9.99236224e-01 -3.90708228e-02  6.63095442e-04]
+ [ 3.90711977e-02  9.99236271e-01 -5.62070665e-04]
+ [-6.40628453e-04  5.87549302e-04  9.99999622e-01]]
+Translation of alignment:
+[20.13631983  5.64464318  5.30956042]
+Scale correction: 1.0
+--------------------------------------------------------------------------------
+Compared 305 absolute pose pairs.
+Calculating APE for translation part pose relation...
+--------------------------------------------------------------------------------
+APE w.r.t. translation part (m)
+(with SE(3) Umeyama alignment)
+
+       max	0.131021
+      mean	0.052940
+    median	0.045541
+       min	0.008184
+      rmse	0.059419
+       sse	1.076843
+       std	0.026982
+
+
+Found 587 of max. 4001 possible matching timestamps between...
+	imu_pose.txt
+and:	pose_output.txt
+..with max. time diff.: 0.01 (s) and time offset: 0.0 (s).
+--------------------------------------------------------------------------------
+Aligning using Umeyama's method...
+Rotation of alignment:
+[[ 0.99832049 -0.05779763  0.00395439]
+ [ 0.0578144   0.99831823 -0.00426651]
+ [-0.00370115  0.00448796  0.99998308]]
+Translation of alignment:
+[20.7353247   5.68265854  5.19336715]
+Scale correction: 1.0
+--------------------------------------------------------------------------------
+Compared 587 absolute pose pairs.
+Calculating APE for translation part pose relation...
+--------------------------------------------------------------------------------
+APE w.r.t. translation part (m)
+(with SE(3) Umeyama alignment)
+
+       max	2.237526
+      mean	0.626231
+    median	0.497097
+       min	0.259238
+      rmse	0.763248
+       sse	341.955637
+       std	0.436329
+

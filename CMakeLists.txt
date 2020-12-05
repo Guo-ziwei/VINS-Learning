@@ -1,21 +1,23 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.10)
 project(vins_estimator)
 
 set(CMAKE_BUILD_TYPE "Release")
-set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_CXX_FLAGS "-std=c++17")
+set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -fopenmp ${SSE_FLAGS} -msse4.2")
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 find_package(Eigen3 REQUIRED)
 find_package(Ceres REQUIRED)
 find_package(Pangolin REQUIRED)
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 3 REQUIRED)
 find_package(Boost REQUIRED COMPONENTS filesystem program_options system)
+find_package(OpenMP REQUIRED)
 
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
 
 message(WARNING "OpenCV_VERSION: ${OpenCV_VERSION}")
-
 include_directories(
   ${PROJECT_SOURCE_DIR}/include
   ${EIGEN3_INCLUDE_DIR}
@@ -68,16 +70,31 @@ ADD_LIBRARY(MyVio SHARED
     src/backend/imu_integration.cc
     )
 
-target_link_libraries(MyVio  
+if(OpenMP_CXX_FOUND)
+  target_link_libraries(MyVio 
+  ${OpenMP_CXX_LIBRARIES}
   ${OpenCV_LIBS}  
   ${CERES_LIBRARIES}
-	${Pangolin_LIBRARIES}
+  ${Pangolin_LIBRARIES}
   camera_model)
+else(OpenMP_CXX_FOUND)
+  target_link_libraries(MyVio  
+    ${OpenCV_LIBS}  
+    ${CERES_LIBRARIES}
+    ${Pangolin_LIBRARIES}
+    camera_model)
+endif()
+
 
 add_executable(run_euroc test/run_euroc.cpp)
 target_link_libraries(run_euroc 
   MyVio  
   -lpthread) 
+
+add_executable(sim_test test/simulation_test.cpp)
+target_link_libraries(sim_test 
+  MyVio  
+  -lpthread)
 
 add_executable(testCurveFitting test/CurveFitting.cpp)
 target_link_libraries(testCurveFitting MyVio)

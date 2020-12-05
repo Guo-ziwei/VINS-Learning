@@ -66,7 +66,8 @@ void Edge::RobustInfo(double &drho, MatXX &info) const{
 
         info = robust_info * information_;
         drho = rho[1];
-    }else
+    }
+    else
     {
         drho = 1.0;
         info = information_;

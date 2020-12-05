@@ -162,13 +162,13 @@ class IntegrationBase
     {
         Eigen::Matrix<double, 15, 1> residuals;
 
-        Eigen::Matrix3d dp_dba = jacobian.block<3, 3>(O_P, O_BA);
-        Eigen::Matrix3d dp_dbg = jacobian.block<3, 3>(O_P, O_BG);
+        Eigen::Matrix3d dp_dba = jacobian.block<3, 3>(O_P, O_BA); // H_a
+        Eigen::Matrix3d dp_dbg = jacobian.block<3, 3>(O_P, O_BG); // J_a
 
-        Eigen::Matrix3d dq_dbg = jacobian.block<3, 3>(O_R, O_BG);
-
-        Eigen::Matrix3d dv_dba = jacobian.block<3, 3>(O_V, O_BA);
-        Eigen::Matrix3d dv_dbg = jacobian.block<3, 3>(O_V, O_BG);
+        Eigen::Matrix3d dq_dbg = jacobian.block<3, 3>(O_R, O_BG); // J_q
+ 
+        Eigen::Matrix3d dv_dba = jacobian.block<3, 3>(O_V, O_BA); // H_b
+        Eigen::Matrix3d dv_dbg = jacobian.block<3, 3>(O_V, O_BG); // J_b
 
         Eigen::Vector3d dba = Bai - linearized_ba;
         Eigen::Vector3d dbg = Bgi - linearized_bg;

@@ -1,0 +1,31 @@
+Loaded 4001 stamps and poses from: imu_pose.txt
+Loaded 580 stamps and poses from: pose_output_noise2.txt
+Synchronizing trajectories...
+Found 580 of max. 4001 possible matching timestamps between...
+	imu_pose.txt
+and:	pose_output_noise2.txt
+..with max. time diff.: 0.01 (s) and time offset: 0.0 (s).
+--------------------------------------------------------------------------------
+Aligning using Umeyama's method...
+Rotation of alignment:
+[[ 9.98292416e-01 -5.84144649e-02  5.28214025e-05]
+ [ 5.84144824e-02  9.98292322e-01 -4.33467169e-04]
+ [-2.74104478e-05  4.35812522e-04  9.99999905e-01]]
+Translation of alignment:
+[20.33628895  6.01297801  4.99564316]
+Scale correction: 1.0
+--------------------------------------------------------------------------------
+Compared 580 absolute pose pairs.
+Calculating APE for translation part pose relation...
+--------------------------------------------------------------------------------
+APE w.r.t. translation part (m)
+(with SE(3) Umeyama alignment)
+
+       max	0.455828
+      mean	0.144746
+    median	0.138932
+       min	0.005294
+      rmse	0.167326
+       sse	16.238903
+       std	0.083945
+

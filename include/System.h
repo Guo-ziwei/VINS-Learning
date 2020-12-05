@@ -47,7 +47,9 @@ public:
     ~System();
 
     void PubImageData(double dStampSec, cv::Mat &img);
-
+    void PubImageData(double dStampSec, std::vector<Eigen::Vector4d, Eigen::aligned_allocator<Eigen::Vector4d>>& cam_points, 
+                        std::vector<Eigen::Vector2d, Eigen::aligned_allocator<Eigen::Vector2d>>& features);
+                        
     void PubImuData(double dStampSec, const Eigen::Vector3d &vGyr, 
         const Eigen::Vector3d &vAcc);
 

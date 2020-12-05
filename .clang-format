@@ -1,0 +1,27 @@
+---
+Language: Cpp
+BasedOnStyle: Google
+# 访问说明符（private,public）的缩进
+AccessModifierOffset: -2
+DerivePointerAlignment: false
+PointerAlignment: Left
+ColumnLimit: 120
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AlignAfterOpenBracket: AlwaysBreak
+IndentWidth: 4
+# return语句后换行
+AlwaysBreakAfterReturnType: None
+# 多行字符串前换行
+AlwaysBreakBeforeMultilineStrings: true
+Cpp11BracedListStyle: true
+# If true, clang-format 会重新组织注释
+ReflowComments:  true
+# 如果true，clang-format 会重新排序头文件
+SortIncludes:    true
+IncludeCategories:
+  - Regex:           '^<.*'
+    Priority:        1
+  - Regex:           '.*'
+    Priority:        2

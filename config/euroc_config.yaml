@@ -3,7 +3,7 @@
 #common parameters
 imu_topic: "/imu0"
 image_topic: "/cam0/image_raw"
-output_path: "/home/hyj/slam_course_vins"
+output_path: "/home/guoziwei/slam_course_vins"
 
 #camera calibration 
 model_type: PINHOLE

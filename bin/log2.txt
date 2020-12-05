@@ -1,0 +1,2644 @@
+1 System() sConfig_file: /home/guo/vio_course/VINS-Course/config/sim_config.yaml
+ fix extrinsic param 
+1 readParameters:  
+  INIT_DEPTH: 5
+  MIN_PARALLAX: 0.0173913
+  ACC_N: 1e-08
+  ACC_W: 1e-08
+  GYR_N: 1e-08
+  GYR_W: 1e-08
+  RIC:    0  0 -1
+-1  0  0
+ 0  1  0
+  TIC:    0.05  0.04 0.003
+  G:           0       0 9.81007
+  BIAS_ACC_THRESHOLD:0.1
+  BIAS_GYR_THRESHOLD:0.1
+  SOLVER_TIME:0.04
+  NUM_ITERATIONS:8
+  ESTIMATE_EXTRINSIC:0
+  ESTIMATE_TD:0
+  ROLLING_SHUTTER:0
+  ROW:640
+  COL:640
+  TD:0
+  TR:0
+  FOCAL_LENGTH:460
+  IMAGE_TOPIC:/cam0/image_raw
+  IMU_TOPIC:/imu0
+  FISHEYE_MASK:
+  CAM_NAMES[0]:/home/guo/vio_course/VINS-Course/config/sim_config.yaml
+  MAX_CNT:150
+  MIN_DIST:10
+  FREQ:30
+  F_THRESHOLD:1
+  SHOW_TRACK:0
+  STEREO_TRACK:0
+  EQUALIZE:1
+  FISHEYE:0
+  PUB_THIS_FRAME:0
+reading paramerter of camera /home/guo/vio_course/VINS-Course/config/sim_config.yaml
+1 PinholeCamera 
+  m_cameraName: camera
+  m_imageWidth: 640
+  m_imageHeight: 640
+  m_k1: -0.2917
+  m_k2: 0.08228
+  m_p1: 5.333e-05
+  m_p2: -0.0001578
+  m_fx: 460
+  m_fy: 460
+  m_cx: 255
+  m_cy: 255
+
+1 Estimator::setParameter FOCAL_LENGTH: 460
+2 System() end
+1 ProcessBackEnd start
+1 PubImuData start imu_data_file: /home/guo/vio_course/VINS-Course/config/imu_data_noise1.txt
+1 PubImageData start sImage_file: /home/guo/vio_course/VINS-Course/config/sim_cam.txt
+1 PubImageData skip the first detected feature, which doesn't contain optical flow speed
+1 image timestamp: 0
+2 image timestamp: 0.0333333
+2 PubImageData first_image_flag
+4 PubImage init_pub skip the first image!
+iter: 0 , chi= 1.5051e+17 , Lambda= 500000
+schur time cost: 1.53891
+iter: 1 , chi= 2.8601e+12 , Lambda= 166667
+schur time cost: 1.48028
+iter: 2 , chi= 9404.81 , Lambda= 55555.6
+schur time cost: 1.37207
+schur time cost: 0.647943
+schur time cost: 0.645387
+schur time cost: 1.05683
+schur time cost: 0.6455
+schur time cost: 0.645654
+iter: 3 , chi= 165.28 , Lambda= 6.06815e+08
+schur time cost: 1.28242
+iter: 4 , chi= 165.279 , Lambda= 4.04543e+08
+schur time cost: 1.3151
+iter: 5 , chi= 165.279 , Lambda= 2.69695e+08
+schur time cost: 1.30016
+iter: 6 , chi= 165.279 , Lambda= 1.79797e+08
+schur time cost: 1.26142
+iter: 7 , chi= 165.279 , Lambda= 1.19865e+08
+schur time cost: 1.31552
+iter: 8 , chi= 165.279 , Lambda= 3.99549e+07
+schur time cost: 1.29763
+iter: 9 , chi= 165.279 , Lambda= 1.33183e+07
+schur time cost: 1.2602
+problem solve cost: 48.5111 ms
+   makeHessian cost: 24.4885 ms
+Initialization finish!
+iter: 0 , chi= 3824.65 , Lambda= 500000
+schur time cost: 1.34609
+iter: 1 , chi= 151.946 , Lambda= 166667
+schur time cost: 1.41043
+schur time cost: 0.769189
+schur time cost: 0.774084
+iter: 2 , chi= 151.516 , Lambda= 812777
+schur time cost: 1.32602
+schur time cost: 1.02731
+schur time cost: 0.65229
+schur time cost: 0.663347
+iter: 3 , chi= 151.498 , Lambda= 3.46785e+07
+schur time cost: 1.21494
+schur time cost: 0.653613
+schur time cost: 0.651755
+iter: 4 , chi= 151.494 , Lambda= 1.84952e+08
+schur time cost: 1.22336
+iter: 5 , chi= 151.494 , Lambda= 1.23301e+08
+schur time cost: 1.191
+iter: 6 , chi= 151.493 , Lambda= 8.22009e+07
+schur time cost: 1.20556
+iter: 7 , chi= 151.493 , Lambda= 5.48006e+07
+schur time cost: 1.18952
+iter: 8 , chi= 151.493 , Lambda= 3.26355e+07
+schur time cost: 1.22486
+iter: 9 , chi= 151.492 , Lambda= 1.97696e+07
+schur time cost: 1.21141
+schur time cost: 0.759581
+schur time cost: 0.694417
+problem solve cost: 52.2757 ms
+   makeHessian cost: 23.0406 ms
+edge factor cnt: 361
+iter: 0 , chi= 12870.3 , Lambda= 500000
+schur time cost: 0.682479
+schur time cost: 0.804255
+schur time cost: 0.845131
+schur time cost: 0.801746
+schur time cost: 0.677755
+iter: 1 , chi= 189.784 , Lambda= 3.41333e+08
+schur time cost: 1.43946
+iter: 2 , chi= 187.512 , Lambda= 2.27556e+08
+schur time cost: 1.38129
+iter: 3 , chi= 187.41 , Lambda= 1.51704e+08
+schur time cost: 1.40641
+iter: 4 , chi= 187.397 , Lambda= 1.01136e+08
+schur time cost: 1.56042
+iter: 5 , chi= 187.391 , Lambda= 6.74239e+07
+schur time cost: 1.25813
+iter: 6 , chi= 187.384 , Lambda= 4.49492e+07
+schur time cost: 1.29711
+iter: 7 , chi= 187.374 , Lambda= 2.99662e+07
+schur time cost: 2.14913
+iter: 8 , chi= 187.359 , Lambda= 9.98872e+06
+schur time cost: 1.45324
+iter: 9 , chi= 187.321 , Lambda= 6.65915e+06
+schur time cost: 1.28724
+problem solve cost: 51.5452 ms
+   makeHessian cost: 24.0745 ms
+edge factor cnt: 0
+iter: 0 , chi= 75966.3 , Lambda= 500000
+schur time cost: 1.84271
+iter: 1 , chi= 63920.1 , Lambda= 166667
+schur time cost: 1.47441
+schur time cost: 0.844313
+schur time cost: 0.638373
+iter: 2 , chi= 63913.3 , Lambda= 888889
+schur time cost: 1.1168
+iter: 3 , chi= 63898.5 , Lambda= 438213
+schur time cost: 1.31176
+schur time cost: 0.646589
+schur time cost: 0.658695
+iter: 4 , chi= 63898.4 , Lambda= 2.33714e+06
+schur time cost: 1.22076
+schur time cost: 0.693114
+iter: 5 , chi= 63897.1 , Lambda= 3.11618e+06
+schur time cost: 1.10869
+schur time cost: 0.96452
+iter: 6 , chi= 63896.9 , Lambda= 4.15491e+06
+schur time cost: 1.11171
+schur time cost: 0.640204
+iter: 7 , chi= 63896.9 , Lambda= 5.53988e+06
+schur time cost: 1.10061
+schur time cost: 0.644462
+iter: 8 , chi= 63896.9 , Lambda= 7.3865e+06
+schur time cost: 1.13492
+schur time cost: 0.637649
+iter: 9 , chi= 63896.9 , Lambda= 9.84867e+06
+schur time cost: 1.11044
+problem solve cost: 52.0014 ms
+   makeHessian cost: 21.7484 ms
+edge factor cnt: 0
+iter: 0 , chi= 49725.5 , Lambda= 500000
+schur time cost: 1.28719
+iter: 1 , chi= 46626 , Lambda= 166667
+schur time cost: 1.1336
+schur time cost: 0.643134
+schur time cost: 0.639232
+iter: 2 , chi= 46527.4 , Lambda= 444444
+schur time cost: 1.29895
+schur time cost: 0.643342
+schur time cost: 0.639235
+iter: 3 , chi= 46527.1 , Lambda= 2.37037e+06
+schur time cost: 1.12557
+schur time cost: 0.640786
+schur time cost: 0.637659
+iter: 4 , chi= 46526.8 , Lambda= 8.32601e+06
+schur time cost: 1.26203
+iter: 5 , chi= 46526.8 , Lambda= 5.55067e+06
+schur time cost: 1.1155
+iter: 6 , chi= 46526.8 , Lambda= 3.70045e+06
+schur time cost: 1.13083
+iter: 7 , chi= 46526.8 , Lambda= 2.46697e+06
+schur time cost: 1.11905
+iter: 8 , chi= 46526.8 , Lambda= 1.64464e+06
+schur time cost: 1.29183
+schur time cost: 1.59515
+schur time cost: 0.655227
+iter: 9 , chi= 46526.8 , Lambda= 8.05863e+06
+schur time cost: 1.12848
+problem solve cost: 48.673 ms
+   makeHessian cost: 20.7388 ms
+edge factor cnt: 361
+iter: 0 , chi= 6274.6 , Lambda= 500000
+schur time cost: 1.28458
+iter: 1 , chi= 334.243 , Lambda= 166667
+schur time cost: 1.15363
+schur time cost: 0.650159
+schur time cost: 0.64034
+iter: 2 , chi= 332.924 , Lambda= 888889
+schur time cost: 1.1894
+schur time cost: 0.643703
+schur time cost: 0.639526
+iter: 3 , chi= 332.703 , Lambda= 4.74074e+06
+schur time cost: 1.12001
+iter: 4 , chi= 332.672 , Lambda= 3.16049e+06
+schur time cost: 1.13377
+schur time cost: 0.644782
+iter: 5 , chi= 332.656 , Lambda= 4.21399e+06
+schur time cost: 1.11597
+iter: 6 , chi= 332.649 , Lambda= 2.80933e+06
+schur time cost: 1.11593
+schur time cost: 0.659049
+iter: 7 , chi= 332.636 , Lambda= 3.74577e+06
+schur time cost: 1.13009
+schur time cost: 0.64568
+iter: 8 , chi= 332.63 , Lambda= 4.99436e+06
+schur time cost: 1.12569
+schur time cost: 0.642259
+iter: 9 , chi= 332.624 , Lambda= 6.65915e+06
+schur time cost: 1.12348
+problem solve cost: 48.304 ms
+   makeHessian cost: 21.3868 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.74722e+06 , Lambda= 500000
+schur time cost: 1.78479
+iter: 1 , chi= 1.74081e+06 , Lambda= 333333
+schur time cost: 1.57485
+iter: 2 , chi= 1.72033e+06 , Lambda= 139824
+schur time cost: 1.33259
+schur time cost: 0.811818
+schur time cost: 0.692653
+schur time cost: 0.63688
+iter: 3 , chi= 1.71849e+06 , Lambda= 2.98291e+06
+schur time cost: 1.14423
+iter: 4 , chi= 1.71849e+06 , Lambda= 1.98861e+06
+schur time cost: 1.13101
+schur time cost: 0.640024
+schur time cost: 0.638006
+iter: 5 , chi= 1.71848e+06 , Lambda= 8.47781e+06
+schur time cost: 1.13743
+schur time cost: 0.639398
+iter: 6 , chi= 1.71848e+06 , Lambda= 1.13037e+07
+schur time cost: 1.13111
+schur time cost: 0.638597
+iter: 7 , chi= 1.71848e+06 , Lambda= 1.50717e+07
+schur time cost: 1.15886
+schur time cost: 0.637942
+iter: 8 , chi= 1.71848e+06 , Lambda= 2.00955e+07
+schur time cost: 1.14063
+iter: 9 , chi= 1.71848e+06 , Lambda= 1.3397e+07
+schur time cost: 1.12992
+schur time cost: 0.640702
+problem solve cost: 52.3787 ms
+   makeHessian cost: 24.0277 ms
+edge factor cnt: 0
+iter: 0 , chi= 12860.8 , Lambda= 500000
+schur time cost: 1.22678
+iter: 1 , chi= 426.578 , Lambda= 166667
+schur time cost: 1.3202
+schur time cost: 12.14
+schur time cost: 0.661069
+schur time cost: 0.638459
+iter: 2 , chi= 357.266 , Lambda= 3.55556e+06
+schur time cost: 1.13434
+schur time cost: 0.638764
+schur time cost: 0.635951
+iter: 3 , chi= 356.816 , Lambda= 1.8963e+07
+schur time cost: 1.19299
+iter: 4 , chi= 356.488 , Lambda= 1.2642e+07
+schur time cost: 1.13579
+iter: 5 , chi= 356.286 , Lambda= 8.42798e+06
+schur time cost: 1.1447
+iter: 6 , chi= 356.177 , Lambda= 5.61866e+06
+schur time cost: 1.12095
+schur time cost: 0.638992
+iter: 7 , chi= 356.003 , Lambda= 7.49154e+06
+schur time cost: 1.18305
+schur time cost: 0.637421
+iter: 8 , chi= 355.932 , Lambda= 9.98872e+06
+schur time cost: 1.13896
+schur time cost: 0.637374
+iter: 9 , chi= 355.872 , Lambda= 1.33183e+07
+schur time cost: 1.27518
+problem solve cost: 65.0074 ms
+   makeHessian cost: 21.4489 ms
+edge factor cnt: 361
+iter: 0 , chi= 5805.27 , Lambda= 500000
+schur time cost: 1.1881
+iter: 1 , chi= 544.653 , Lambda= 166667
+schur time cost: 1.34137
+schur time cost: 0.65765
+schur time cost: 0.642267
+schur time cost: 0.641006
+iter: 2 , chi= 337.742 , Lambda= 3.55556e+06
+schur time cost: 1.17183
+schur time cost: 0.643641
+iter: 3 , chi= 337.594 , Lambda= 4.74074e+06
+schur time cost: 1.15021
+schur time cost: 0.853794
+iter: 4 , chi= 336.966 , Lambda= 6.32099e+06
+schur time cost: 1.14651
+schur time cost: 0.644413
+iter: 5 , chi= 336.574 , Lambda= 8.42798e+06
+schur time cost: 1.38197
+iter: 6 , chi= 336.21 , Lambda= 5.61866e+06
+schur time cost: 1.17264
+iter: 7 , chi= 336.099 , Lambda= 3.74577e+06
+schur time cost: 1.33834
+iter: 8 , chi= 335.538 , Lambda= 2.49718e+06
+schur time cost: 1.1485
+schur time cost: 0.643039
+schur time cost: 0.641222
+iter: 9 , chi= 334.587 , Lambda= 1.33183e+07
+schur time cost: 1.17544
+problem solve cost: 49.79 ms
+   makeHessian cost: 22.446 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.27201e+07 , Lambda= 500000
+schur time cost: 2.49766
+schur time cost: 0.815981
+iter: 1 , chi= 1.27022e+07 , Lambda= 333333
+schur time cost: 1.30557
+schur time cost: 0.64226
+schur time cost: 0.639778
+schur time cost: 0.639242
+iter: 2 , chi= 1.27019e+07 , Lambda= 7.11111e+06
+schur time cost: 1.32361
+schur time cost: 0.643704
+iter: 3 , chi= 1.27019e+07 , Lambda= 9.48148e+06
+schur time cost: 1.33309
+schur time cost: 0.639258
+iter: 4 , chi= 1.27019e+07 , Lambda= 1.2642e+07
+schur time cost: 1.96236
+schur time cost: 0.649234
+iter: 5 , chi= 1.27019e+07 , Lambda= 1.6856e+07
+schur time cost: 1.37439
+iter: 6 , chi= 1.27019e+07 , Lambda= 1.12373e+07
+schur time cost: 1.33678
+iter: 7 , chi= 1.27019e+07 , Lambda= 7.49154e+06
+schur time cost: 1.31691
+iter: 8 , chi= 1.27019e+07 , Lambda= 4.99436e+06
+schur time cost: 1.34763
+schur time cost: 0.643376
+iter: 9 , chi= 1.27019e+07 , Lambda= 6.65915e+06
+schur time cost: 1.36066
+schur time cost: 1.40053
+problem solve cost: 60.1177 ms
+   makeHessian cost: 25.0638 ms
+edge factor cnt: 0
+iter: 0 , chi= 2.86574e+07 , Lambda= 500000
+schur time cost: 1.29465
+iter: 1 , chi= 2.86568e+07 , Lambda= 333333
+schur time cost: 1.1267
+schur time cost: 0.641059
+schur time cost: 0.645994
+iter: 2 , chi= 2.86549e+07 , Lambda= 1.77778e+06
+schur time cost: 1.12012
+schur time cost: 0.995645
+iter: 3 , chi= 2.86547e+07 , Lambda= 2.37037e+06
+schur time cost: 1.27872
+schur time cost: 0.64185
+iter: 4 , chi= 2.86542e+07 , Lambda= 2.54493e+06
+schur time cost: 1.11648
+schur time cost: 0.641253
+schur time cost: 0.648258
+iter: 5 , chi= 2.86541e+07 , Lambda= 6.78647e+06
+schur time cost: 1.16212
+schur time cost: 0.767064
+iter: 6 , chi= 2.86541e+07 , Lambda= 9.04863e+06
+schur time cost: 1.19858
+iter: 7 , chi= 2.86541e+07 , Lambda= 6.03242e+06
+schur time cost: 1.10806
+schur time cost: 0.676345
+iter: 8 , chi= 2.86541e+07 , Lambda= 8.04322e+06
+schur time cost: 1.11582
+iter: 9 , chi= 2.86541e+07 , Lambda= 5.36215e+06
+schur time cost: 1.11783
+problem solve cost: 52.2728 ms
+   makeHessian cost: 27.0974 ms
+edge factor cnt: 0
+iter: 0 , chi= 2.66314e+07 , Lambda= 500000
+schur time cost: 1.66301
+iter: 1 , chi= 2.66011e+07 , Lambda= 166667
+schur time cost: 1.46815
+schur time cost: 0.644048
+schur time cost: 0.646632
+iter: 2 , chi= 2.66011e+07 , Lambda= 888889
+schur time cost: 1.30584
+iter: 3 , chi= 2.6601e+07 , Lambda= 592593
+schur time cost: 1.14078
+iter: 4 , chi= 2.6601e+07 , Lambda= 395062
+schur time cost: 1.16183
+schur time cost: 0.645247
+schur time cost: 0.641403
+iter: 5 , chi= 2.6601e+07 , Lambda= 2.107e+06
+schur time cost: 1.2862
+iter: 6 , chi= 2.6601e+07 , Lambda= 1.40466e+06
+schur time cost: 1.12456
+iter: 7 , chi= 2.6601e+07 , Lambda= 936443
+schur time cost: 1.1143
+schur time cost: 0.643573
+iter: 8 , chi= 2.6601e+07 , Lambda= 1.24859e+06
+schur time cost: 1.13371
+schur time cost: 0.967767
+iter: 9 , chi= 2.6601e+07 , Lambda= 832393
+schur time cost: 1.11425
+schur time cost: 0.645293
+problem solve cost: 49.0672 ms
+   makeHessian cost: 22.0529 ms
+edge factor cnt: 0
+iter: 0 , chi= 2.31545e+07 , Lambda= 500000
+schur time cost: 1.64054
+iter: 1 , chi= 2.31387e+07 , Lambda= 166667
+schur time cost: 1.48271
+schur time cost: 0.648035
+schur time cost: 0.644158
+iter: 2 , chi= 2.31387e+07 , Lambda= 488606
+schur time cost: 1.31654
+schur time cost: 0.646048
+schur time cost: 0.648759
+iter: 3 , chi= 2.31387e+07 , Lambda= 2.6059e+06
+schur time cost: 1.13873
+schur time cost: 0.690349
+iter: 4 , chi= 2.31387e+07 , Lambda= 3.47453e+06
+schur time cost: 1.12085
+schur time cost: 0.646716
+schur time cost: 0.642707
+iter: 5 , chi= 2.31387e+07 , Lambda= 1.85308e+07
+schur time cost: 1.13066
+iter: 6 , chi= 2.31387e+07 , Lambda= 1.23539e+07
+schur time cost: 1.1207
+schur time cost: 0.645545
+iter: 7 , chi= 2.31387e+07 , Lambda= 1.64718e+07
+schur time cost: 1.25665
+iter: 8 , chi= 2.31387e+07 , Lambda= 1.09812e+07
+schur time cost: 1.12739
+iter: 9 , chi= 2.31387e+07 , Lambda= 7.32082e+06
+schur time cost: 1.11941
+schur time cost: 0.645271
+problem solve cost: 50.5426 ms
+   makeHessian cost: 21.4319 ms
+edge factor cnt: 361
+iter: 0 , chi= 31363.8 , Lambda= 500000
+schur time cost: 1.44775
+schur time cost: 0.88116
+iter: 1 , chi= 12710 , Lambda= 666667
+schur time cost: 1.54322
+schur time cost: 0.880501
+schur time cost: 0.876363
+schur time cost: 0.647573
+iter: 2 , chi= 379.261 , Lambda= 1.61697e+07
+schur time cost: 1.12319
+schur time cost: 0.647508
+schur time cost: 0.644921
+iter: 3 , chi= 372.885 , Lambda= 8.62383e+07
+schur time cost: 1.29619
+iter: 4 , chi= 369.434 , Lambda= 5.74922e+07
+schur time cost: 1.13772
+iter: 5 , chi= 367.049 , Lambda= 3.83281e+07
+schur time cost: 1.12665
+iter: 6 , chi= 364.536 , Lambda= 2.55521e+07
+schur time cost: 1.14156
+iter: 7 , chi= 363.297 , Lambda= 1.70347e+07
+schur time cost: 1.25875
+iter: 8 , chi= 363.165 , Lambda= 1.13565e+07
+schur time cost: 1.28431
+schur time cost: 0.646557
+iter: 9 , chi= 362.589 , Lambda= 1.5142e+07
+schur time cost: 1.12237
+schur time cost: 0.664478
+problem solve cost: 52.7035 ms
+   makeHessian cost: 23.8317 ms
+edge factor cnt: 0
+iter: 0 , chi= 5.9311e+06 , Lambda= 500000
+schur time cost: 1.34436
+schur time cost: 0.844826
+iter: 1 , chi= 5.9149e+06 , Lambda= 666667
+schur time cost: 1.52188
+schur time cost: 0.840898
+iter: 2 , chi= 5.91154e+06 , Lambda= 888889
+schur time cost: 1.2047
+schur time cost: 0.648893
+schur time cost: 0.64224
+iter: 3 , chi= 5.90966e+06 , Lambda= 2.37037e+06
+schur time cost: 1.21019
+schur time cost: 0.645636
+schur time cost: 0.641925
+iter: 4 , chi= 5.90966e+06 , Lambda= 1.2642e+07
+schur time cost: 1.17098
+schur time cost: 0.647602
+iter: 5 , chi= 5.90966e+06 , Lambda= 1.6856e+07
+schur time cost: 1.17121
+iter: 6 , chi= 5.90966e+06 , Lambda= 1.12373e+07
+schur time cost: 1.17283
+schur time cost: 0.655849
+iter: 7 , chi= 5.90966e+06 , Lambda= 1.49831e+07
+schur time cost: 1.1817
+schur time cost: 0.671153
+iter: 8 , chi= 5.90966e+06 , Lambda= 1.99774e+07
+schur time cost: 1.18667
+schur time cost: 0.641966
+iter: 9 , chi= 5.90966e+06 , Lambda= 2.66366e+07
+schur time cost: 1.14263
+problem solve cost: 52.6587 ms
+   makeHessian cost: 23.8301 ms
+edge factor cnt: 0
+iter: 0 , chi= 8.99333e+06 , Lambda= 500000
+schur time cost: 1.66874
+iter: 1 , chi= 8.94271e+06 , Lambda= 255466
+schur time cost: 1.54815
+schur time cost: 0.819304
+schur time cost: 0.647732
+schur time cost: 0.643718
+iter: 2 , chi= 8.9367e+06 , Lambda= 5.44995e+06
+schur time cost: 1.15296
+schur time cost: 0.648498
+schur time cost: 0.646871
+iter: 3 , chi= 8.9367e+06 , Lambda= 2.90664e+07
+schur time cost: 1.17384
+iter: 4 , chi= 8.9367e+06 , Lambda= 1.93776e+07
+schur time cost: 1.1362
+iter: 5 , chi= 8.9367e+06 , Lambda= 1.29184e+07
+schur time cost: 1.14796
+schur time cost: 0.652206
+iter: 6 , chi= 8.9367e+06 , Lambda= 1.72245e+07
+schur time cost: 1.13584
+iter: 7 , chi= 8.9367e+06 , Lambda= 5.74151e+06
+schur time cost: 1.14613
+schur time cost: 0.646593
+iter: 8 , chi= 8.9367e+06 , Lambda= 3.82767e+06
+schur time cost: 1.1506
+schur time cost: 0.647903
+schur time cost: 0.644994
+schur time cost: 0.645649
+iter: 9 , chi= 8.9367e+06 , Lambda= 1.63314e+08
+schur time cost: 1.15458
+problem solve cost: 51.9475 ms
+   makeHessian cost: 21.0813 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.5452e+07 , Lambda= 500000
+schur time cost: 1.34994
+schur time cost: 0.820215
+iter: 1 , chi= 1.54487e+07 , Lambda= 666667
+schur time cost: 1.15819
+iter: 2 , chi= 1.54435e+07 , Lambda= 444444
+schur time cost: 1.32965
+iter: 3 , chi= 1.54143e+07 , Lambda= 296296
+schur time cost: 1.16065
+schur time cost: 0.645936
+schur time cost: 0.643616
+schur time cost: 0.646991
+iter: 4 , chi= 1.53895e+07 , Lambda= 6.32099e+06
+schur time cost: 1.16818
+schur time cost: 0.643948
+iter: 5 , chi= 1.53885e+07 , Lambda= 8.42798e+06
+schur time cost: 1.16802
+schur time cost: 0.645164
+iter: 6 , chi= 1.53884e+07 , Lambda= 9.15315e+06
+schur time cost: 1.86746
+schur time cost: 0.664879
+schur time cost: 0.645336
+iter: 7 , chi= 1.53884e+07 , Lambda= 4.88168e+07
+schur time cost: 1.17018
+schur time cost: 0.64914
+iter: 8 , chi= 1.53884e+07 , Lambda= 6.50891e+07
+schur time cost: 1.1345
+iter: 9 , chi= 1.53884e+07 , Lambda= 4.33927e+07
+schur time cost: 1.13262
+problem solve cost: 54.815 ms
+   makeHessian cost: 25.3211 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.01811e+07 , Lambda= 500000
+schur time cost: 1.63239
+schur time cost: 0.874023
+iter: 1 , chi= 1.01178e+07 , Lambda= 545157
+schur time cost: 1.77363
+iter: 2 , chi= 1.011e+07 , Lambda= 181719
+schur time cost: 1.13622
+iter: 3 , chi= 1.01097e+07 , Lambda= 121146
+schur time cost: 1.16972
+schur time cost: 0.643141
+schur time cost: 0.637805
+schur time cost: 0.641896
+iter: 4 , chi= 1.01095e+07 , Lambda= 2.58445e+06
+schur time cost: 1.10246
+schur time cost: 0.641038
+schur time cost: 0.638342
+iter: 5 , chi= 1.01095e+07 , Lambda= 1.37837e+07
+schur time cost: 1.17517
+schur time cost: 0.639718
+schur time cost: 0.642834
+iter: 6 , chi= 1.01095e+07 , Lambda= 7.35132e+07
+schur time cost: 1.12108
+schur time cost: 0.63849
+schur time cost: 0.637662
+schur time cost: 0.636504
+schur time cost: 0.643976
+iter: 7 , chi= 1.01095e+07 , Lambda= 5.0185e+10
+schur time cost: 1.12742
+schur time cost: 0.638779
+schur time cost: 0.637136
+schur time cost: 0.637102
+sqrt(currentChi_) <= stopThresholdLM_
+problem solve cost: 51.8561 ms
+   makeHessian cost: 18.2477 ms
+edge factor cnt: 361
+iter: 0 , chi= 22644.8 , Lambda= 500000
+schur time cost: 1.5605
+schur time cost: 0.82359
+schur time cost: 0.81757
+iter: 1 , chi= 484.216 , Lambda= 1.33333e+06
+schur time cost: 1.43554
+schur time cost: 0.819262
+schur time cost: 0.648563
+schur time cost: 0.649542
+iter: 2 , chi= 327.442 , Lambda= 5.68889e+07
+schur time cost: 1.12077
+iter: 3 , chi= 327.303 , Lambda= 3.79259e+07
+schur time cost: 1.15306
+iter: 4 , chi= 327.136 , Lambda= 2.5284e+07
+schur time cost: 1.12196
+iter: 5 , chi= 326.924 , Lambda= 1.6856e+07
+schur time cost: 1.31434
+iter: 6 , chi= 326.707 , Lambda= 1.12373e+07
+schur time cost: 1.12439
+schur time cost: 0.650077
+iter: 7 , chi= 326.201 , Lambda= 1.49831e+07
+schur time cost: 1.12233
+schur time cost: 0.650302
+iter: 8 , chi= 325.879 , Lambda= 9.98872e+06
+schur time cost: 1.14706
+schur time cost: 0.650368
+iter: 9 , chi= 325.747 , Lambda= 1.33183e+07
+schur time cost: 1.1244
+schur time cost: 0.655216
+problem solve cost: 50.6098 ms
+   makeHessian cost: 21.0623 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.89359e+06 , Lambda= 500000
+schur time cost: 1.65821
+iter: 1 , chi= 1.89283e+06 , Lambda= 333333
+schur time cost: 1.37006
+schur time cost: 0.646022
+iter: 2 , chi= 1.87628e+06 , Lambda= 444444
+schur time cost: 1.12401
+schur time cost: 0.642995
+iter: 3 , chi= 1.87042e+06 , Lambda= 592593
+schur time cost: 1.11201
+schur time cost: 0.646071
+schur time cost: 0.654333
+iter: 4 , chi= 1.86748e+06 , Lambda= 2.80033e+06
+schur time cost: 1.16827
+schur time cost: 0.647238
+schur time cost: 0.642789
+iter: 5 , chi= 1.86705e+06 , Lambda= 7.46753e+06
+schur time cost: 1.11223
+schur time cost: 0.642735
+schur time cost: 0.648346
+schur time cost: 0.642343
+iter: 6 , chi= 1.86705e+06 , Lambda= 3.18615e+08
+schur time cost: 1.11365
+iter: 7 , chi= 1.86705e+06 , Lambda= 2.1241e+08
+schur time cost: 1.12361
+iter: 8 , chi= 1.86705e+06 , Lambda= 1.41607e+08
+schur time cost: 1.10616
+iter: 9 , chi= 1.86705e+06 , Lambda= 9.44044e+07
+schur time cost: 1.12449
+problem solve cost: 50.4145 ms
+   makeHessian cost: 23.8669 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.85299e+06 , Lambda= 500000
+schur time cost: 1.50326
+iter: 1 , chi= 1.83633e+06 , Lambda= 333333
+schur time cost: 1.53973
+schur time cost: 0.883195
+schur time cost: 0.758011
+schur time cost: 0.648184
+iter: 2 , chi= 1.83245e+06 , Lambda= 7.11111e+06
+schur time cost: 1.14489
+schur time cost: 0.649643
+iter: 3 , chi= 1.83243e+06 , Lambda= 9.48148e+06
+schur time cost: 1.12374
+iter: 4 , chi= 1.83243e+06 , Lambda= 6.32099e+06
+schur time cost: 1.13852
+iter: 5 , chi= 1.83243e+06 , Lambda= 4.21399e+06
+schur time cost: 1.14635
+schur time cost: 0.648957
+schur time cost: 0.646463
+schur time cost: 0.652123
+iter: 6 , chi= 1.83243e+06 , Lambda= 1.56109e+08
+schur time cost: 1.12449
+iter: 7 , chi= 1.83243e+06 , Lambda= 1.04073e+08
+schur time cost: 1.1321
+iter: 8 , chi= 1.83243e+06 , Lambda= 6.93819e+07
+schur time cost: 1.12218
+iter: 9 , chi= 1.83243e+06 , Lambda= 4.62546e+07
+schur time cost: 1.13628
+problem solve cost: 48.1991 ms
+   makeHessian cost: 21.3472 ms
+edge factor cnt: 0
+iter: 0 , chi= 9.12318e+06 , Lambda= 500000
+schur time cost: 1.60825
+iter: 1 , chi= 9.1008e+06 , Lambda= 166667
+schur time cost: 1.47561
+schur time cost: 0.643975
+schur time cost: 0.642972
+iter: 2 , chi= 9.10072e+06 , Lambda= 888889
+schur time cost: 1.12667
+iter: 3 , chi= 9.10021e+06 , Lambda= 592593
+schur time cost: 1.10711
+schur time cost: 0.641936
+schur time cost: 0.64146
+iter: 4 , chi= 9.09992e+06 , Lambda= 2.88349e+06
+schur time cost: 1.1232
+schur time cost: 0.669606
+schur time cost: 0.64272
+iter: 5 , chi= 9.09988e+06 , Lambda= 1.31927e+07
+schur time cost: 1.10759
+schur time cost: 0.643169
+schur time cost: 0.642582
+schur time cost: 0.641126
+iter: 6 , chi= 9.09988e+06 , Lambda= 5.62887e+08
+schur time cost: 1.1092
+iter: 7 , chi= 9.09988e+06 , Lambda= 3.75258e+08
+schur time cost: 1.09801
+iter: 8 , chi= 9.09988e+06 , Lambda= 2.50172e+08
+schur time cost: 1.11776
+iter: 9 , chi= 9.09988e+06 , Lambda= 1.66781e+08
+schur time cost: 1.28709
+problem solve cost: 49.8566 ms
+   makeHessian cost: 23.42 ms
+edge factor cnt: 361
+iter: 0 , chi= 2042.82 , Lambda= 500000
+schur time cost: 1.54093
+schur time cost: 0.893235
+schur time cost: 0.89613
+schur time cost: 0.887525
+iter: 1 , chi= 280.596 , Lambda= 2.08473e+07
+schur time cost: 1.18475
+iter: 2 , chi= 280.587 , Lambda= 1.38982e+07
+schur time cost: 1.15152
+schur time cost: 0.653439
+iter: 3 , chi= 280.142 , Lambda= 1.8531e+07
+schur time cost: 1.14978
+schur time cost: 0.654742
+iter: 4 , chi= 280.076 , Lambda= 2.4708e+07
+schur time cost: 1.14394
+iter: 5 , chi= 280.027 , Lambda= 1.6472e+07
+schur time cost: 1.1463
+schur time cost: 0.654606
+iter: 6 , chi= 279.933 , Lambda= 2.19626e+07
+schur time cost: 1.12978
+schur time cost: 0.655592
+iter: 7 , chi= 279.868 , Lambda= 2.92835e+07
+schur time cost: 1.13475
+iter: 8 , chi= 279.838 , Lambda= 1.95223e+07
+schur time cost: 1.14354
+iter: 9 , chi= 279.791 , Lambda= 1.30149e+07
+schur time cost: 1.35062
+schur time cost: 0.656184
+problem solve cost: 49.8221 ms
+   makeHessian cost: 21.1756 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.15989e+08 , Lambda= 500000
+schur time cost: 1.36606
+schur time cost: 0.965631
+schur time cost: 0.941403
+iter: 1 , chi= 1.15952e+08 , Lambda= 1.33333e+06
+schur time cost: 1.09087
+schur time cost: 0.642007
+iter: 2 , chi= 1.15952e+08 , Lambda= 1.77778e+06
+schur time cost: 1.0261
+schur time cost: 0.648149
+schur time cost: 0.64298
+iter: 3 , chi= 1.15952e+08 , Lambda= 4.74074e+06
+schur time cost: 1.03429
+schur time cost: 0.641118
+schur time cost: 0.640637
+iter: 4 , chi= 1.15952e+08 , Lambda= 2.5284e+07
+schur time cost: 1.06832
+iter: 5 , chi= 1.15952e+08 , Lambda= 1.6856e+07
+schur time cost: 1.0479
+schur time cost: 0.644099
+iter: 6 , chi= 1.15952e+08 , Lambda= 2.24746e+07
+schur time cost: 1.03176
+iter: 7 , chi= 1.15952e+08 , Lambda= 1.49831e+07
+schur time cost: 1.04892
+schur time cost: 0.648343
+iter: 8 , chi= 1.15952e+08 , Lambda= 1.99774e+07
+schur time cost: 1.02883
+iter: 9 , chi= 1.15952e+08 , Lambda= 1.33183e+07
+schur time cost: 1.67617
+schur time cost: 0.676676
+problem solve cost: 59.1586 ms
+   makeHessian cost: 20.1963 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.21856e+08 , Lambda= 500000
+schur time cost: 1.2519
+schur time cost: 0.651917
+iter: 1 , chi= 1.2182e+08 , Lambda= 376829
+schur time cost: 1.25449
+iter: 2 , chi= 1.21818e+08 , Lambda= 251219
+schur time cost: 1.45246
+schur time cost: 0.712893
+schur time cost: 0.648138
+schur time cost: 0.670226
+iter: 3 , chi= 1.21817e+08 , Lambda= 5.35934e+06
+schur time cost: 1.13473
+iter: 4 , chi= 1.21817e+08 , Lambda= 3.57289e+06
+schur time cost: 1.13484
+schur time cost: 0.649706
+schur time cost: 0.647666
+iter: 5 , chi= 1.21817e+08 , Lambda= 1.90554e+07
+schur time cost: 1.13766
+schur time cost: 0.656626
+iter: 6 , chi= 1.21817e+08 , Lambda= 2.54072e+07
+schur time cost: 1.16542
+iter: 7 , chi= 1.21817e+08 , Lambda= 1.69382e+07
+schur time cost: 1.15759
+schur time cost: 0.650778
+schur time cost: 0.648188
+iter: 8 , chi= 1.21817e+08 , Lambda= 9.03368e+07
+schur time cost: 1.13659
+iter: 9 , chi= 1.21817e+08 , Lambda= 6.02246e+07
+schur time cost: 1.14158
+problem solve cost: 49.6656 ms
+   makeHessian cost: 21.2025 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.17528e+08 , Lambda= 500000
+schur time cost: 1.71763
+iter: 1 , chi= 1.17504e+08 , Lambda= 222824
+schur time cost: 1.25037
+iter: 2 , chi= 1.17503e+08 , Lambda= 148549
+schur time cost: 1.13428
+schur time cost: 0.647264
+schur time cost: 0.645003
+schur time cost: 0.666893
+iter: 3 , chi= 1.17501e+08 , Lambda= 6.33078e+06
+schur time cost: 1.12873
+iter: 4 , chi= 1.17501e+08 , Lambda= 2.11026e+06
+schur time cost: 1.11336
+schur time cost: 0.646741
+schur time cost: 0.64329
+iter: 5 , chi= 1.17501e+08 , Lambda= 7.59946e+06
+schur time cost: 1.12652
+schur time cost: 0.647042
+iter: 6 , chi= 1.17501e+08 , Lambda= 1.01326e+07
+schur time cost: 1.34059
+schur time cost: 0.647545
+iter: 7 , chi= 1.17501e+08 , Lambda= 1.35101e+07
+schur time cost: 1.11783
+iter: 8 , chi= 1.17501e+08 , Lambda= 9.00676e+06
+schur time cost: 1.17093
+schur time cost: 0.654455
+schur time cost: 0.644973
+iter: 9 , chi= 1.17501e+08 , Lambda= 4.80361e+07
+schur time cost: 1.12331
+problem solve cost: 50.7162 ms
+   makeHessian cost: 21.9573 ms
+edge factor cnt: 361
+iter: 0 , chi= 16093.4 , Lambda= 500000
+schur time cost: 1.29419
+schur time cost: 0.689992
+iter: 1 , chi= 3389.3 , Lambda= 666667
+schur time cost: 1.33426
+iter: 2 , chi= 296.043 , Lambda= 222222
+schur time cost: 1.11995
+schur time cost: 0.652552
+schur time cost: 0.644217
+schur time cost: 0.643088
+iter: 3 , chi= 294.454 , Lambda= 9.48148e+06
+schur time cost: 1.11968
+schur time cost: 0.644164
+schur time cost: 0.64311
+iter: 4 , chi= 294.413 , Lambda= 5.05679e+07
+schur time cost: 1.17727
+schur time cost: 0.668493
+schur time cost: 0.645355
+iter: 5 , chi= 294.412 , Lambda= 2.69695e+08
+schur time cost: 1.12332
+schur time cost: 0.643788
+schur time cost: 0.642986
+iter: 6 , chi= 294.412 , Lambda= 1.43838e+09
+schur time cost: 1.12765
+schur time cost: 0.728583
+schur time cost: 0.644382
+schur time cost: 0.642472
+sqrt(currentChi_) <= stopThresholdLM_
+problem solve cost: 43.847 ms
+   makeHessian cost: 15.3095 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.93841e+06 , Lambda= 500000
+schur time cost: 1.55049
+iter: 1 , chi= 1.93495e+06 , Lambda= 333333
+schur time cost: 1.63957
+schur time cost: 0.925832
+iter: 2 , chi= 1.93272e+06 , Lambda= 444444
+schur time cost: 1.37495
+schur time cost: 0.668252
+schur time cost: 0.645361
+iter: 3 , chi= 1.93144e+06 , Lambda= 1.18519e+06
+schur time cost: 1.19296
+schur time cost: 0.647567
+schur time cost: 0.646267
+iter: 4 , chi= 1.93138e+06 , Lambda= 3.16049e+06
+schur time cost: 1.25608
+schur time cost: 0.647021
+schur time cost: 0.653515
+iter: 5 , chi= 1.93138e+06 , Lambda= 1.6856e+07
+schur time cost: 1.44447
+schur time cost: 0.651045
+iter: 6 , chi= 1.93138e+06 , Lambda= 2.24746e+07
+schur time cost: 1.13463
+schur time cost: 0.646798
+schur time cost: 0.644138
+iter: 7 , chi= 1.93138e+06 , Lambda= 1.19865e+08
+schur time cost: 1.12576
+iter: 8 , chi= 1.93138e+06 , Lambda= 7.99098e+07
+schur time cost: 1.13121
+iter: 9 , chi= 1.93138e+06 , Lambda= 5.32732e+07
+schur time cost: 2.06079
+problem solve cost: 55.936 ms
+   makeHessian cost: 23.6307 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.07137e+06 , Lambda= 500000
+schur time cost: 1.21642
+iter: 1 , chi= 1.06884e+06 , Lambda= 321933
+schur time cost: 1.55844
+schur time cost: 0.889212
+schur time cost: 0.638315
+iter: 2 , chi= 1.06842e+06 , Lambda= 858489
+schur time cost: 1.12222
+schur time cost: 0.63884
+schur time cost: 0.638314
+schur time cost: 0.664622
+iter: 3 , chi= 1.06841e+06 , Lambda= 1.83144e+07
+schur time cost: 1.11113
+schur time cost: 0.64002
+schur time cost: 1.15602
+schur time cost: 0.637358
+iter: 4 , chi= 1.06841e+06 , Lambda= 7.81416e+08
+schur time cost: 1.13375
+schur time cost: 0.643486
+schur time cost: 0.636761
+iter: 5 , chi= 1.06841e+06 , Lambda= 4.16755e+09
+schur time cost: 1.12518
+schur time cost: 0.638865
+schur time cost: 0.636208
+sqrt(currentChi_) <= stopThresholdLM_
+problem solve cost: 39.2466 ms
+   makeHessian cost: 13.4141 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.34928e+06 , Lambda= 500000
+schur time cost: 1.73701
+iter: 1 , chi= 1.32165e+06 , Lambda= 166667
+schur time cost: 1.62101
+schur time cost: 0.644192
+schur time cost: 0.643141
+iter: 2 , chi= 1.3209e+06 , Lambda= 444444
+schur time cost: 1.1304
+schur time cost: 0.668143
+schur time cost: 0.649292
+iter: 3 , chi= 1.32088e+06 , Lambda= 2.37037e+06
+schur time cost: 1.12493
+iter: 4 , chi= 1.32087e+06 , Lambda= 1.58025e+06
+schur time cost: 1.12931
+schur time cost: 0.648968
+schur time cost: 0.677659
+iter: 5 , chi= 1.32087e+06 , Lambda= 4.70451e+06
+schur time cost: 1.31316
+schur time cost: 0.644656
+schur time cost: 0.642839
+iter: 6 , chi= 1.32087e+06 , Lambda= 2.50907e+07
+schur time cost: 1.15723
+iter: 7 , chi= 1.32087e+06 , Lambda= 1.67271e+07
+schur time cost: 1.19436
+schur time cost: 0.64437
+schur time cost: 0.64169
+iter: 8 , chi= 1.32087e+06 , Lambda= 8.92115e+07
+schur time cost: 1.14618
+iter: 9 , chi= 1.32087e+06 , Lambda= 5.94743e+07
+schur time cost: 1.14095
+problem solve cost: 52.2423 ms
+   makeHessian cost: 21.652 ms
+edge factor cnt: 0
+iter: 0 , chi= 2.49818e+07 , Lambda= 500000
+schur time cost: 1.33651
+iter: 1 , chi= 2.49257e+07 , Lambda= 166667
+schur time cost: 1.24452
+schur time cost: 0.797628
+schur time cost: 0.788173
+iter: 2 , chi= 2.49257e+07 , Lambda= 831172
+schur time cost: 1.13571
+schur time cost: 0.651863
+schur time cost: 0.654058
+iter: 3 , chi= 2.49256e+07 , Lambda= 2.21646e+06
+schur time cost: 1.12105
+schur time cost: 0.650735
+schur time cost: 0.648625
+iter: 4 , chi= 2.49256e+07 , Lambda= 1.18211e+07
+schur time cost: 1.31032
+schur time cost: 0.649905
+iter: 5 , chi= 2.49256e+07 , Lambda= 1.57615e+07
+schur time cost: 1.11973
+schur time cost: 0.650201
+iter: 6 , chi= 2.49256e+07 , Lambda= 2.10153e+07
+schur time cost: 1.10203
+schur time cost: 0.658908
+iter: 7 , chi= 2.49256e+07 , Lambda= 2.80204e+07
+schur time cost: 1.13368
+iter: 8 , chi= 2.49256e+07 , Lambda= 1.86803e+07
+schur time cost: 1.14395
+schur time cost: 0.659678
+iter: 9 , chi= 2.49256e+07 , Lambda= 2.4907e+07
+schur time cost: 1.11008
+problem solve cost: 50.89 ms
+   makeHessian cost: 21.0322 ms
+edge factor cnt: 361
+iter: 0 , chi= 33337.4 , Lambda= 500000
+schur time cost: 1.66026
+iter: 1 , chi= 9362.76 , Lambda= 333333
+schur time cost: 1.41503
+schur time cost: 0.644629
+schur time cost: 0.639343
+iter: 2 , chi= 391.074 , Lambda= 888889
+schur time cost: 1.12731
+schur time cost: 0.639719
+schur time cost: 0.637335
+schur time cost: 0.647669
+iter: 3 , chi= 366.694 , Lambda= 2.08909e+07
+schur time cost: 1.32578
+schur time cost: 0.640415
+iter: 4 , chi= 366.676 , Lambda= 2.78546e+07
+schur time cost: 1.11898
+iter: 5 , chi= 366.669 , Lambda= 1.85697e+07
+schur time cost: 1.11831
+schur time cost: 0.638781
+iter: 6 , chi= 366.647 , Lambda= 2.47596e+07
+schur time cost: 1.12623
+iter: 7 , chi= 366.637 , Lambda= 1.65064e+07
+schur time cost: 1.11632
+schur time cost: 0.64087
+iter: 8 , chi= 366.596 , Lambda= 2.20085e+07
+schur time cost: 1.10932
+iter: 9 , chi= 366.575 , Lambda= 1.46724e+07
+schur time cost: 1.34468
+schur time cost: 0.641239
+problem solve cost: 50.7068 ms
+   makeHessian cost: 21.8177 ms
+edge factor cnt: 0
+iter: 0 , chi= 2.00696e+07 , Lambda= 500000
+schur time cost: 1.59097
+iter: 1 , chi= 2.00577e+07 , Lambda= 333333
+schur time cost: 1.55695
+schur time cost: 0.637049
+schur time cost: 0.641552
+iter: 2 , chi= 2.00528e+07 , Lambda= 1.77778e+06
+schur time cost: 1.11007
+iter: 3 , chi= 2.00512e+07 , Lambda= 592593
+schur time cost: 1.28926
+schur time cost: 0.646545
+schur time cost: 0.635934
+iter: 4 , chi= 2.00512e+07 , Lambda= 1.58025e+06
+schur time cost: 1.12543
+schur time cost: 0.636715
+iter: 5 , chi= 2.00512e+07 , Lambda= 2.107e+06
+schur time cost: 1.14979
+schur time cost: 0.689264
+schur time cost: 0.640437
+iter: 6 , chi= 2.00512e+07 , Lambda= 5.61866e+06
+schur time cost: 1.12247
+schur time cost: 0.637659
+schur time cost: 0.635056
+iter: 7 , chi= 2.00512e+07 , Lambda= 2.99662e+07
+schur time cost: 1.13012
+iter: 8 , chi= 2.00512e+07 , Lambda= 1.99774e+07
+schur time cost: 1.1309
+iter: 9 , chi= 2.00512e+07 , Lambda= 1.33183e+07
+schur time cost: 1.13298
+schur time cost: 0.63746
+problem solve cost: 51.8482 ms
+   makeHessian cost: 21.796 ms
+edge factor cnt: 0
+iter: 0 , chi= 5.03486e+06 , Lambda= 500000
+schur time cost: 1.62742
+iter: 1 , chi= 5.00797e+06 , Lambda= 333333
+schur time cost: 1.52824
+schur time cost: 0.635012
+schur time cost: 0.632701
+iter: 2 , chi= 4.99255e+06 , Lambda= 888889
+schur time cost: 1.30057
+schur time cost: 0.634305
+iter: 3 , chi= 4.99254e+06 , Lambda= 1.18519e+06
+schur time cost: 1.13264
+schur time cost: 0.63328
+schur time cost: 0.634071
+iter: 4 , chi= 4.99254e+06 , Lambda= 3.16049e+06
+schur time cost: 1.11273
+schur time cost: 0.688133
+schur time cost: 0.631861
+iter: 5 , chi= 4.99254e+06 , Lambda= 1.6856e+07
+schur time cost: 1.12219
+iter: 6 , chi= 4.99254e+06 , Lambda= 1.12373e+07
+schur time cost: 1.13109
+schur time cost: 0.633363
+schur time cost: 0.643531
+iter: 7 , chi= 4.99254e+06 , Lambda= 5.99323e+07
+schur time cost: 1.12467
+iter: 8 , chi= 4.99254e+06 , Lambda= 3.99549e+07
+schur time cost: 1.16448
+schur time cost: 0.638241
+iter: 9 , chi= 4.99254e+06 , Lambda= 5.32732e+07
+schur time cost: 1.1078
+problem solve cost: 51.8828 ms
+   makeHessian cost: 21.5266 ms
+edge factor cnt: 0
+iter: 0 , chi= 6.8826e+06 , Lambda= 500000
+schur time cost: 1.27083
+iter: 1 , chi= 6.83854e+06 , Lambda= 166667
+schur time cost: 1.64683
+schur time cost: 1.46664
+schur time cost: 0.65672
+iter: 2 , chi= 6.83798e+06 , Lambda= 888889
+schur time cost: 1.15953
+iter: 3 , chi= 6.83789e+06 , Lambda= 592593
+schur time cost: 1.13336
+schur time cost: 0.656308
+iter: 4 , chi= 6.83788e+06 , Lambda= 790123
+schur time cost: 1.19088
+schur time cost: 0.648903
+iter: 5 , chi= 6.83787e+06 , Lambda= 1.0535e+06
+schur time cost: 1.17086
+schur time cost: 0.64932
+iter: 6 , chi= 6.83787e+06 , Lambda= 1.40466e+06
+schur time cost: 1.13507
+schur time cost: 0.664446
+iter: 7 , chi= 6.83787e+06 , Lambda= 1.87289e+06
+schur time cost: 1.15146
+schur time cost: 0.649283
+schur time cost: 0.648184
+schur time cost: 0.646656
+iter: 8 , chi= 6.83787e+06 , Lambda= 3.99549e+07
+schur time cost: 1.13458
+schur time cost: 0.647547
+schur time cost: 0.645997
+schur time cost: 0.646028
+iter: 9 , chi= 6.83787e+06 , Lambda= 1.70474e+09
+schur time cost: 1.15559
+sqrt(currentChi_) <= stopThresholdLM_
+problem solve cost: 54.6493 ms
+   makeHessian cost: 21.3031 ms
+edge factor cnt: 0
+iter: 0 , chi= 8.38434e+06 , Lambda= 500000
+schur time cost: 1.37957
+iter: 1 , chi= 8.35127e+06 , Lambda= 166667
+schur time cost: 1.30722
+schur time cost: 0.667807
+schur time cost: 0.667379
+iter: 2 , chi= 8.35125e+06 , Lambda= 888889
+schur time cost: 1.15289
+schur time cost: 0.6558
+schur time cost: 0.653515
+schur time cost: 0.6546
+iter: 3 , chi= 8.35124e+06 , Lambda= 1.8963e+07
+schur time cost: 1.15891
+schur time cost: 0.661438
+schur time cost: 0.656749
+iter: 4 , chi= 8.35124e+06 , Lambda= 1.01136e+08
+schur time cost: 1.1562
+schur time cost: 0.654657
+iter: 5 , chi= 8.35124e+06 , Lambda= 1.34848e+08
+schur time cost: 1.14839
+schur time cost: 0.654387
+schur time cost: 0.69889
+iter: 6 , chi= 8.35124e+06 , Lambda= 7.19188e+08
+schur time cost: 1.13709
+iter: 7 , chi= 8.35124e+06 , Lambda= 4.79459e+08
+schur time cost: 1.1478
+schur time cost: 0.661577
+schur time cost: 0.653929
+iter: 8 , chi= 8.35124e+06 , Lambda= 2.55711e+09
+schur time cost: 1.19393
+iter: 9 , chi= 8.35124e+06 , Lambda= 1.70474e+09
+schur time cost: 1.17368
+schur time cost: 0.656412
+schur time cost: 0.654873
+problem solve cost: 56.1311 ms
+   makeHessian cost: 21.7798 ms
+edge factor cnt: 0
+iter: 0 , chi= 9.5825e+06 , Lambda= 500000
+schur time cost: 1.64266
+iter: 1 , chi= 9.5534e+06 , Lambda= 166667
+schur time cost: 1.40403
+schur time cost: 0.794799
+schur time cost: 0.792837
+iter: 2 , chi= 9.55325e+06 , Lambda= 444444
+schur time cost: 1.35945
+schur time cost: 0.656824
+schur time cost: 0.653149
+iter: 3 , chi= 9.55324e+06 , Lambda= 1.18519e+06
+schur time cost: 1.12962
+schur time cost: 0.652893
+schur time cost: 0.649788
+iter: 4 , chi= 9.55324e+06 , Lambda= 6.32099e+06
+schur time cost: 1.12066
+schur time cost: 0.665308
+schur time cost: 0.651431
+iter: 5 , chi= 9.55324e+06 , Lambda= 3.37119e+07
+schur time cost: 1.13392
+iter: 6 , chi= 9.55324e+06 , Lambda= 2.24746e+07
+schur time cost: 1.18299
+iter: 7 , chi= 9.55324e+06 , Lambda= 1.49831e+07
+schur time cost: 1.34296
+schur time cost: 0.65377
+iter: 8 , chi= 9.55324e+06 , Lambda= 1.99774e+07
+schur time cost: 1.13215
+schur time cost: 0.653088
+iter: 9 , chi= 9.55324e+06 , Lambda= 2.66366e+07
+schur time cost: 1.11711
+problem solve cost: 51.6511 ms
+   makeHessian cost: 20.9074 ms
+edge factor cnt: 361
+iter: 0 , chi= 19999.9 , Lambda= 500000
+schur time cost: 0.736811
+schur time cost: 0.724907
+iter: 1 , chi= 567.789 , Lambda= 333333
+schur time cost: 0.648195
+schur time cost: 0.657414
+schur time cost: 0.656673
+iter: 2 , chi= 404.405 , Lambda= 1.24885e+06
+schur time cost: 0.646491
+schur time cost: 0.643363
+iter: 3 , chi= 394.022 , Lambda= 1.66513e+06
+schur time cost: 0.64793
+schur time cost: 0.641286
+iter: 4 , chi= 389.486 , Lambda= 2.22018e+06
+schur time cost: 0.646745
+schur time cost: 0.640475
+iter: 5 , chi= 388.516 , Lambda= 2.96024e+06
+schur time cost: 0.644871
+schur time cost: 0.640516
+iter: 6 , chi= 388.147 , Lambda= 3.94699e+06
+schur time cost: 0.650614
+schur time cost: 0.643072
+iter: 7 , chi= 387.695 , Lambda= 5.26265e+06
+schur time cost: 0.644648
+schur time cost: 0.639156
+schur time cost: 0.639922
+iter: 8 , chi= 387.622 , Lambda= 2.80675e+07
+schur time cost: 0.647062
+iter: 9 , chi= 387.616 , Lambda= 1.87116e+07
+schur time cost: 0.644847
+problem solve cost: 62.7364 ms
+   makeHessian cost: 20.2075 ms
+edge factor cnt: 0
+iter: 0 , chi= 431921 , Lambda= 500000
+schur time cost: 1.59694
+schur time cost: 0.639189
+iter: 1 , chi= 430172 , Lambda= 504704
+schur time cost: 1.35359
+iter: 2 , chi= 430134 , Lambda= 336469
+schur time cost: 1.33449
+iter: 3 , chi= 430000 , Lambda= 224313
+schur time cost: 1.35317
+schur time cost: 0.634594
+schur time cost: 0.632533
+schur time cost: 0.635274
+iter: 4 , chi= 429968 , Lambda= 4.78534e+06
+schur time cost: 1.33434
+schur time cost: 0.635095
+iter: 5 , chi= 429968 , Lambda= 6.38046e+06
+schur time cost: 1.34283
+schur time cost: 0.637339
+schur time cost: 0.635893
+iter: 6 , chi= 429968 , Lambda= 3.40291e+07
+schur time cost: 1.37565
+schur time cost: 0.634308
+iter: 7 , chi= 429968 , Lambda= 4.53721e+07
+schur time cost: 1.58328
+schur time cost: 0.638345
+iter: 8 , chi= 429968 , Lambda= 6.04962e+07
+schur time cost: 1.3668
+iter: 9 , chi= 429968 , Lambda= 4.03308e+07
+schur time cost: 1.32689
+problem solve cost: 54.6055 ms
+   makeHessian cost: 24.93 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.47401e+07 , Lambda= 500000
+schur time cost: 1.21796
+schur time cost: 0.695701
+iter: 1 , chi= 1.47356e+07 , Lambda= 346372
+schur time cost: 1.12553
+iter: 2 , chi= 1.47354e+07 , Lambda= 185082
+schur time cost: 1.10991
+schur time cost: 0.649171
+schur time cost: 0.642037
+iter: 3 , chi= 1.47353e+07 , Lambda= 493552
+schur time cost: 1.11905
+schur time cost: 0.64384
+schur time cost: 0.642734
+iter: 4 , chi= 1.47353e+07 , Lambda= 2.63228e+06
+schur time cost: 1.10799
+schur time cost: 0.65572
+iter: 5 , chi= 1.47353e+07 , Lambda= 3.5097e+06
+schur time cost: 1.13035
+iter: 6 , chi= 1.47353e+07 , Lambda= 2.3398e+06
+schur time cost: 1.11262
+schur time cost: 0.697134
+schur time cost: 0.643125
+iter: 7 , chi= 1.47353e+07 , Lambda= 1.24789e+07
+schur time cost: 1.12261
+iter: 8 , chi= 1.47353e+07 , Lambda= 8.31929e+06
+schur time cost: 1.128
+iter: 9 , chi= 1.47353e+07 , Lambda= 5.5462e+06
+schur time cost: 1.10646
+schur time cost: 0.641752
+problem solve cost: 48.2393 ms
+   makeHessian cost: 20.4653 ms
+edge factor cnt: 0
+iter: 0 , chi= 8.23805e+06 , Lambda= 500000
+schur time cost: 1.28064
+iter: 1 , chi= 8.23622e+06 , Lambda= 200445
+schur time cost: 1.5334
+schur time cost: 0.872359
+schur time cost: 0.872004
+iter: 2 , chi= 8.23607e+06 , Lambda= 534520
+schur time cost: 1.13076
+schur time cost: 0.655426
+schur time cost: 0.641177
+iter: 3 , chi= 8.23606e+06 , Lambda= 1.42539e+06
+schur time cost: 1.13058
+schur time cost: 0.65009
+schur time cost: 0.64211
+iter: 4 , chi= 8.23606e+06 , Lambda= 7.60206e+06
+schur time cost: 1.14446
+schur time cost: 0.641731
+iter: 5 , chi= 8.23606e+06 , Lambda= 1.01361e+07
+schur time cost: 1.11992
+schur time cost: 0.64232
+iter: 6 , chi= 8.23606e+06 , Lambda= 1.35148e+07
+schur time cost: 1.11423
+iter: 7 , chi= 8.23606e+06 , Lambda= 9.00985e+06
+schur time cost: 1.12795
+schur time cost: 0.642522
+schur time cost: 0.680833
+iter: 8 , chi= 8.23606e+06 , Lambda= 4.80525e+07
+schur time cost: 1.13593
+iter: 9 , chi= 8.23606e+06 , Lambda= 3.2035e+07
+schur time cost: 1.12518
+problem solve cost: 52.3642 ms
+   makeHessian cost: 21.8004 ms
+edge factor cnt: 0
+iter: 0 , chi= 5.51885e+07 , Lambda= 500000
+schur time cost: 1.21568
+iter: 1 , chi= 5.51804e+07 , Lambda= 166667
+schur time cost: 1.48599
+schur time cost: 0.838567
+schur time cost: 0.83538
+iter: 2 , chi= 5.51804e+07 , Lambda= 888889
+schur time cost: 1.23414
+schur time cost: 0.666456
+iter: 3 , chi= 5.51803e+07 , Lambda= 1.18519e+06
+schur time cost: 1.32221
+schur time cost: 0.644188
+iter: 4 , chi= 5.51803e+07 , Lambda= 1.58025e+06
+schur time cost: 1.11445
+schur time cost: 0.696909
+schur time cost: 0.639703
+iter: 5 , chi= 5.51803e+07 , Lambda= 6.62234e+06
+schur time cost: 1.11737
+iter: 6 , chi= 5.51803e+07 , Lambda= 4.4149e+06
+schur time cost: 1.12909
+schur time cost: 0.641205
+iter: 7 , chi= 5.51803e+07 , Lambda= 5.88653e+06
+schur time cost: 1.16319
+iter: 8 , chi= 5.51803e+07 , Lambda= 3.92435e+06
+schur time cost: 1.19025
+schur time cost: 0.644049
+iter: 9 , chi= 5.51803e+07 , Lambda= 2.61623e+06
+schur time cost: 1.13348
+schur time cost: 0.648936
+schur time cost: 0.641278
+problem solve cost: 52.1471 ms
+   makeHessian cost: 21.5158 ms
+edge factor cnt: 361
+iter: 0 , chi= 3249.33 , Lambda= 500000
+schur time cost: 1.45662
+schur time cost: 0.783669
+schur time cost: 0.791306
+iter: 1 , chi= 541.29 , Lambda= 1.33333e+06
+schur time cost: 1.21115
+schur time cost: 0.646339
+schur time cost: 0.701718
+iter: 2 , chi= 478.364 , Lambda= 3.55556e+06
+schur time cost: 1.13906
+schur time cost: 0.65271
+schur time cost: 0.6448
+iter: 3 , chi= 477.681 , Lambda= 1.8963e+07
+schur time cost: 1.1633
+schur time cost: 0.646071
+iter: 4 , chi= 477.03 , Lambda= 2.5284e+07
+schur time cost: 1.12539
+iter: 5 , chi= 476.839 , Lambda= 1.6856e+07
+schur time cost: 1.13357
+iter: 6 , chi= 476.823 , Lambda= 1.12373e+07
+schur time cost: 1.13391
+schur time cost: 0.698633
+iter: 7 , chi= 476.534 , Lambda= 1.49831e+07
+schur time cost: 1.14022
+iter: 8 , chi= 476.45 , Lambda= 9.98872e+06
+schur time cost: 1.12355
+schur time cost: 0.645629
+iter: 9 , chi= 476.374 , Lambda= 1.33183e+07
+schur time cost: 1.13278
+schur time cost: 0.699279
+problem solve cost: 51.0889 ms
+   makeHessian cost: 20.9223 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.1385e+07 , Lambda= 500000
+schur time cost: 1.78961
+schur time cost: 0.959398
+iter: 1 , chi= 1.13693e+07 , Lambda= 634858
+schur time cost: 1.86013
+schur time cost: 0.654402
+schur time cost: 0.651337
+iter: 2 , chi= 1.13667e+07 , Lambda= 1.69296e+06
+schur time cost: 1.1631
+schur time cost: 0.694102
+schur time cost: 0.655528
+iter: 3 , chi= 1.13667e+07 , Lambda= 4.51455e+06
+schur time cost: 1.14237
+schur time cost: 0.65077
+schur time cost: 0.665218
+iter: 4 , chi= 1.13667e+07 , Lambda= 2.40776e+07
+schur time cost: 1.13989
+iter: 5 , chi= 1.13667e+07 , Lambda= 1.60517e+07
+schur time cost: 1.16507
+schur time cost: 0.654351
+schur time cost: 0.663708
+iter: 6 , chi= 1.13667e+07 , Lambda= 8.56092e+07
+schur time cost: 1.13118
+iter: 7 , chi= 1.13667e+07 , Lambda= 5.70728e+07
+schur time cost: 1.1196
+schur time cost: 0.663317
+iter: 8 , chi= 1.13667e+07 , Lambda= 7.60971e+07
+schur time cost: 1.14097
+iter: 9 , chi= 1.13667e+07 , Lambda= 5.07314e+07
+schur time cost: 1.12423
+problem solve cost: 52.9646 ms
+   makeHessian cost: 21.6337 ms
+edge factor cnt: 0
+iter: 0 , chi= 7.9824e+06 , Lambda= 500000
+schur time cost: 1.88378
+iter: 1 , chi= 7.96024e+06 , Lambda= 333333
+schur time cost: 1.42299
+schur time cost: 0.648443
+iter: 2 , chi= 7.95403e+06 , Lambda= 444444
+schur time cost: 1.12214
+schur time cost: 0.649159
+iter: 3 , chi= 7.95195e+06 , Lambda= 429431
+schur time cost: 1.12179
+schur time cost: 0.647466
+schur time cost: 0.651324
+iter: 4 , chi= 7.95173e+06 , Lambda= 1.14515e+06
+schur time cost: 1.12028
+schur time cost: 0.663217
+schur time cost: 0.646491
+iter: 5 , chi= 7.95173e+06 , Lambda= 6.10747e+06
+schur time cost: 1.14181
+schur time cost: 0.648357
+schur time cost: 1.79735
+iter: 6 , chi= 7.95173e+06 , Lambda= 3.25732e+07
+schur time cost: 1.17703
+iter: 7 , chi= 7.95173e+06 , Lambda= 2.17154e+07
+schur time cost: 1.15814
+iter: 8 , chi= 7.95173e+06 , Lambda= 1.4477e+07
+schur time cost: 1.19466
+iter: 9 , chi= 7.95173e+06 , Lambda= 9.65131e+06
+schur time cost: 1.12322
+problem solve cost: 52.6179 ms
+   makeHessian cost: 24.334 ms
+edge factor cnt: 0
+iter: 0 , chi= 5.21277e+06 , Lambda= 500000
+schur time cost: 1.35245
+iter: 1 , chi= 5.17886e+06 , Lambda= 204290
+schur time cost: 1.4996
+schur time cost: 0.649463
+schur time cost: 0.644364
+iter: 2 , chi= 5.17593e+06 , Lambda= 544772
+schur time cost: 1.1317
+schur time cost: 0.652054
+schur time cost: 0.646752
+iter: 3 , chi= 5.1759e+06 , Lambda= 1.45273e+06
+schur time cost: 1.1331
+schur time cost: 0.734633
+schur time cost: 0.645421
+iter: 4 , chi= 5.1759e+06 , Lambda= 7.74787e+06
+schur time cost: 1.11989
+iter: 5 , chi= 5.1759e+06 , Lambda= 5.16525e+06
+schur time cost: 1.13566
+schur time cost: 0.646147
+iter: 6 , chi= 5.1759e+06 , Lambda= 6.887e+06
+schur time cost: 1.14086
+schur time cost: 0.651042
+iter: 7 , chi= 5.1759e+06 , Lambda= 9.18266e+06
+schur time cost: 1.13123
+iter: 8 , chi= 5.1759e+06 , Lambda= 6.12178e+06
+schur time cost: 1.11633
+schur time cost: 0.647018
+iter: 9 , chi= 5.1759e+06 , Lambda= 8.16237e+06
+schur time cost: 1.15594
+problem solve cost: 49.1831 ms
+   makeHessian cost: 21.0563 ms
+edge factor cnt: 361
+iter: 0 , chi= 30793.9 , Lambda= 500000
+schur time cost: 1.31556
+schur time cost: 0.844856
+iter: 1 , chi= 1938.88 , Lambda= 333333
+schur time cost: 1.2839
+schur time cost: 0.648386
+iter: 2 , chi= 1623.69 , Lambda= 444444
+schur time cost: 1.13319
+schur time cost: 0.647989
+schur time cost: 0.646233
+iter: 3 , chi= 456.623 , Lambda= 1.18519e+06
+schur time cost: 1.12226
+schur time cost: 0.709084
+schur time cost: 0.650589
+iter: 4 , chi= 446.975 , Lambda= 5.30058e+06
+schur time cost: 1.13081
+schur time cost: 0.648034
+iter: 5 , chi= 446.345 , Lambda= 7.06744e+06
+schur time cost: 1.12774
+schur time cost: 0.647169
+iter: 6 , chi= 446.219 , Lambda= 9.42325e+06
+schur time cost: 1.12632
+schur time cost: 0.653759
+iter: 7 , chi= 446.066 , Lambda= 1.25643e+07
+schur time cost: 1.97771
+iter: 8 , chi= 445.905 , Lambda= 8.37622e+06
+schur time cost: 1.14242
+schur time cost: 0.648552
+iter: 9 , chi= 445.664 , Lambda= 1.11683e+07
+schur time cost: 1.3228
+problem solve cost: 52.1111 ms
+   makeHessian cost: 21.1565 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.96286e+06 , Lambda= 500000
+schur time cost: 1.73475
+iter: 1 , chi= 1.94359e+06 , Lambda= 217534
+schur time cost: 1.55675
+schur time cost: 0.795576
+schur time cost: 0.642967
+iter: 2 , chi= 1.94179e+06 , Lambda= 580089
+schur time cost: 1.1564
+schur time cost: 0.644229
+iter: 3 , chi= 1.94178e+06 , Lambda= 773453
+schur time cost: 1.33205
+schur time cost: 0.650773
+schur time cost: 0.649319
+iter: 4 , chi= 1.94176e+06 , Lambda= 2.06254e+06
+schur time cost: 1.13169
+schur time cost: 0.645584
+schur time cost: 0.643373
+iter: 5 , chi= 1.94176e+06 , Lambda= 1.10002e+07
+schur time cost: 1.13777
+schur time cost: 0.645644
+iter: 6 , chi= 1.94176e+06 , Lambda= 1.4667e+07
+schur time cost: 1.13238
+iter: 7 , chi= 1.94176e+06 , Lambda= 9.77797e+06
+schur time cost: 1.15249
+schur time cost: 0.644879
+iter: 8 , chi= 1.94176e+06 , Lambda= 1.30373e+07
+schur time cost: 1.34163
+schur time cost: 0.662915
+schur time cost: 0.643471
+iter: 9 , chi= 1.94176e+06 , Lambda= 6.95322e+07
+schur time cost: 1.14099
+problem solve cost: 53.2378 ms
+   makeHessian cost: 21.1791 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.41531e+06 , Lambda= 500000
+schur time cost: 1.23451
+iter: 1 , chi= 1.37323e+06 , Lambda= 166667
+schur time cost: 1.41054
+schur time cost: 0.699957
+schur time cost: 0.68883
+iter: 2 , chi= 1.37197e+06 , Lambda= 444444
+schur time cost: 1.37865
+schur time cost: 0.652047
+schur time cost: 0.654943
+iter: 3 , chi= 1.37193e+06 , Lambda= 1.18519e+06
+schur time cost: 1.13255
+schur time cost: 0.649496
+schur time cost: 0.648467
+iter: 4 , chi= 1.37193e+06 , Lambda= 6.32099e+06
+schur time cost: 1.12868
+schur time cost: 0.649847
+iter: 5 , chi= 1.37193e+06 , Lambda= 8.42798e+06
+schur time cost: 1.13587
+schur time cost: 0.648783
+iter: 6 , chi= 1.37193e+06 , Lambda= 1.12373e+07
+schur time cost: 1.12199
+iter: 7 , chi= 1.37193e+06 , Lambda= 7.49154e+06
+schur time cost: 1.15467
+schur time cost: 0.651484
+iter: 8 , chi= 1.37193e+06 , Lambda= 9.98872e+06
+schur time cost: 1.13141
+schur time cost: 0.650043
+schur time cost: 0.648756
+iter: 9 , chi= 1.37193e+06 , Lambda= 5.32732e+07
+schur time cost: 1.1246
+problem solve cost: 52.1487 ms
+   makeHessian cost: 21.1992 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.46799e+06 , Lambda= 500000
+schur time cost: 1.66143
+iter: 1 , chi= 1.44519e+06 , Lambda= 333333
+schur time cost: 1.50687
+iter: 2 , chi= 1.44203e+06 , Lambda= 222222
+schur time cost: 1.14032
+schur time cost: 0.690617
+iter: 3 , chi= 1.43934e+06 , Lambda= 235909
+schur time cost: 1.13056
+schur time cost: 0.650153
+schur time cost: 0.645274
+schur time cost: 0.643034
+iter: 4 , chi= 1.439e+06 , Lambda= 5.03273e+06
+schur time cost: 1.13126
+schur time cost: 0.646358
+iter: 5 , chi= 1.439e+06 , Lambda= 6.7103e+06
+schur time cost: 1.12326
+schur time cost: 0.650985
+iter: 6 , chi= 1.439e+06 , Lambda= 8.94707e+06
+schur time cost: 1.13955
+schur time cost: 0.645968
+iter: 7 , chi= 1.439e+06 , Lambda= 1.19294e+07
+schur time cost: 1.15246
+iter: 8 , chi= 1.439e+06 , Lambda= 7.95295e+06
+schur time cost: 1.12476
+schur time cost: 0.646499
+iter: 9 , chi= 1.439e+06 , Lambda= 1.06039e+07
+schur time cost: 1.13254
+schur time cost: 0.644841
+problem solve cost: 50.2666 ms
+   makeHessian cost: 21.5028 ms
+edge factor cnt: 361
+iter: 0 , chi= 5876.91 , Lambda= 500000
+schur time cost: 1.83219
+schur time cost: 0.854568
+iter: 1 , chi= 4315.94 , Lambda= 666667
+schur time cost: 1.154
+schur time cost: 0.650945
+iter: 2 , chi= 814.2 , Lambda= 644908
+schur time cost: 1.12652
+schur time cost: 0.655584
+schur time cost: 0.648022
+iter: 3 , chi= 434.279 , Lambda= 1.71975e+06
+schur time cost: 1.1264
+schur time cost: 0.651218
+schur time cost: 0.647319
+iter: 4 , chi= 431.551 , Lambda= 9.17202e+06
+schur time cost: 1.12636
+iter: 5 , chi= 431.445 , Lambda= 6.11468e+06
+schur time cost: 1.14351
+iter: 6 , chi= 431.441 , Lambda= 4.07645e+06
+schur time cost: 1.1959
+schur time cost: 0.651741
+iter: 7 , chi= 430.297 , Lambda= 5.43527e+06
+schur time cost: 1.12541
+schur time cost: 0.652782
+iter: 8 , chi= 429.711 , Lambda= 7.24703e+06
+schur time cost: 1.168
+schur time cost: 0.656765
+iter: 9 , chi= 429.407 , Lambda= 9.66271e+06
+schur time cost: 1.15704
+problem solve cost: 50.3114 ms
+   makeHessian cost: 21.3599 ms
+edge factor cnt: 0
+iter: 0 , chi= 8353.96 , Lambda= 500000
+schur time cost: 1.71548
+schur time cost: 0.889076
+iter: 1 , chi= 3253.83 , Lambda= 666667
+schur time cost: 1.1762
+schur time cost: 0.649336
+iter: 2 , chi= 851.143 , Lambda= 864535
+schur time cost: 1.14685
+schur time cost: 0.649352
+iter: 3 , chi= 486.071 , Lambda= 969263
+schur time cost: 1.14597
+schur time cost: 0.647655
+iter: 4 , chi= 454.596 , Lambda= 1.29235e+06
+schur time cost: 1.13484
+schur time cost: 0.65489
+schur time cost: 0.647014
+iter: 5 , chi= 436.209 , Lambda= 3.44627e+06
+schur time cost: 1.18103
+schur time cost: 0.648765
+schur time cost: 0.647268
+iter: 6 , chi= 436.155 , Lambda= 1.83801e+07
+schur time cost: 1.13786
+iter: 7 , chi= 436.14 , Lambda= 1.22534e+07
+schur time cost: 1.14457
+iter: 8 , chi= 436.13 , Lambda= 8.16893e+06
+schur time cost: 1.1939
+schur time cost: 0.649568
+iter: 9 , chi= 436.102 , Lambda= 1.08919e+07
+schur time cost: 1.12921
+schur time cost: 0.654655
+problem solve cost: 51.8182 ms
+   makeHessian cost: 21.5638 ms
+edge factor cnt: 0
+iter: 0 , chi= 31192.2 , Lambda= 500000
+schur time cost: 1.30619
+iter: 1 , chi= 921.86 , Lambda= 166667
+schur time cost: 1.57036
+schur time cost: 0.879426
+schur time cost: 0.884959
+schur time cost: 0.859422
+iter: 2 , chi= 435.763 , Lambda= 3.55556e+06
+schur time cost: 1.14979
+schur time cost: 0.645668
+schur time cost: 0.6451
+iter: 3 , chi= 435.53 , Lambda= 1.8963e+07
+schur time cost: 1.16026
+schur time cost: 0.646246
+iter: 4 , chi= 435.515 , Lambda= 2.5284e+07
+schur time cost: 1.14767
+iter: 5 , chi= 435.499 , Lambda= 1.6856e+07
+schur time cost: 1.13494
+iter: 6 , chi= 435.49 , Lambda= 1.12373e+07
+schur time cost: 1.1499
+iter: 7 , chi= 435.487 , Lambda= 7.49154e+06
+schur time cost: 1.14043
+schur time cost: 0.667775
+iter: 8 , chi= 435.48 , Lambda= 9.98872e+06
+schur time cost: 1.13224
+iter: 9 , chi= 435.452 , Lambda= 6.65915e+06
+schur time cost: 1.14075
+schur time cost: 0.991621
+problem solve cost: 49.942 ms
+   makeHessian cost: 21.1498 ms
+edge factor cnt: 0
+iter: 0 , chi= 20944 , Lambda= 500000
+schur time cost: 1.62852
+iter: 1 , chi= 3685.16 , Lambda= 333333
+schur time cost: 1.24785
+schur time cost: 0.641526
+schur time cost: 0.65067
+iter: 2 , chi= 471.63 , Lambda= 888889
+schur time cost: 1.12617
+schur time cost: 0.640149
+iter: 3 , chi= 470.035 , Lambda= 1.18519e+06
+schur time cost: 1.29994
+schur time cost: 0.642349
+iter: 4 , chi= 459.633 , Lambda= 1.58025e+06
+schur time cost: 1.10783
+schur time cost: 0.638881
+iter: 5 , chi= 450.489 , Lambda= 1.80642e+06
+schur time cost: 1.10684
+schur time cost: 0.63878
+iter: 6 , chi= 449.576 , Lambda= 2.40857e+06
+schur time cost: 1.11296
+schur time cost: 0.667996
+schur time cost: 0.638253
+schur time cost: 0.637197
+iter: 7 , chi= 449.317 , Lambda= 9.32669e+07
+schur time cost: 1.13409
+iter: 8 , chi= 449.315 , Lambda= 6.2178e+07
+schur time cost: 1.2872
+iter: 9 , chi= 449.31 , Lambda= 4.1452e+07
+schur time cost: 1.1286
+schur time cost: 0.884478
+problem solve cost: 52.9049 ms
+   makeHessian cost: 25.2249 ms
+edge factor cnt: 0
+iter: 0 , chi= 8.16864e+06 , Lambda= 500000
+schur time cost: 1.47631
+iter: 1 , chi= 8.15799e+06 , Lambda= 166667
+schur time cost: 1.37409
+schur time cost: 0.765274
+iter: 2 , chi= 8.15774e+06 , Lambda= 222222
+schur time cost: 1.12406
+schur time cost: 0.654058
+schur time cost: 0.650855
+iter: 3 , chi= 8.15732e+06 , Lambda= 777996
+schur time cost: 1.12379
+schur time cost: 0.651965
+iter: 4 , chi= 8.1573e+06 , Lambda= 1.03733e+06
+schur time cost: 1.12804
+schur time cost: 0.650861
+iter: 5 , chi= 8.15729e+06 , Lambda= 1.3831e+06
+schur time cost: 1.13633
+schur time cost: 0.653142
+iter: 6 , chi= 8.15728e+06 , Lambda= 1.81698e+06
+schur time cost: 1.12102
+schur time cost: 0.652394
+iter: 7 , chi= 8.15728e+06 , Lambda= 2.42264e+06
+schur time cost: 1.11994
+schur time cost: 0.984448
+iter: 8 , chi= 8.15728e+06 , Lambda= 3.23018e+06
+schur time cost: 1.11845
+schur time cost: 0.651536
+iter: 9 , chi= 8.15728e+06 , Lambda= 4.30691e+06
+schur time cost: 1.14097
+schur time cost: 0.651784
+problem solve cost: 51.0451 ms
+   makeHessian cost: 20.997 ms
+edge factor cnt: 361
+iter: 0 , chi= 15013.7 , Lambda= 500000
+schur time cost: 1.27556
+iter: 1 , chi= 8437.81 , Lambda= 333333
+schur time cost: 1.4341
+schur time cost: 0.786204
+iter: 2 , chi= 5806.11 , Lambda= 444444
+schur time cost: 1.3295
+schur time cost: 0.76
+iter: 3 , chi= 1540.47 , Lambda= 592593
+schur time cost: 1.1271
+schur time cost: 0.647339
+schur time cost: 0.654816
+iter: 4 , chi= 472.682 , Lambda= 1.58025e+06
+schur time cost: 1.1217
+schur time cost: 0.649363
+schur time cost: 0.646763
+iter: 5 , chi= 470.463 , Lambda= 8.42798e+06
+schur time cost: 1.13022
+iter: 6 , chi= 470.175 , Lambda= 5.61866e+06
+schur time cost: 1.12297
+schur time cost: 0.975872
+iter: 7 , chi= 469.697 , Lambda= 7.49154e+06
+schur time cost: 1.14624
+iter: 8 , chi= 469.477 , Lambda= 4.99436e+06
+schur time cost: 1.12503
+schur time cost: 0.648828
+iter: 9 , chi= 468.999 , Lambda= 6.65915e+06
+schur time cost: 1.1226
+schur time cost: 0.647857
+problem solve cost: 50.2094 ms
+   makeHessian cost: 21.0243 ms
+edge factor cnt: 0
+iter: 0 , chi= 5.00598e+06 , Lambda= 500000
+schur time cost: 1.6566
+iter: 1 , chi= 4.91042e+06 , Lambda= 203269
+schur time cost: 1.37979
+schur time cost: 0.794926
+schur time cost: 0.643805
+iter: 2 , chi= 4.90219e+06 , Lambda= 542051
+schur time cost: 1.14711
+schur time cost: 0.645013
+schur time cost: 0.642808
+schur time cost: 0.64758
+iter: 3 , chi= 4.90213e+06 , Lambda= 1.15638e+07
+schur time cost: 1.1423
+iter: 4 , chi= 4.90213e+06 , Lambda= 7.70917e+06
+schur time cost: 1.17042
+schur time cost: 0.6527
+schur time cost: 0.642507
+iter: 5 , chi= 4.90213e+06 , Lambda= 4.11156e+07
+schur time cost: 1.32396
+iter: 6 , chi= 4.90213e+06 , Lambda= 2.74104e+07
+schur time cost: 1.13185
+iter: 7 , chi= 4.90213e+06 , Lambda= 1.82736e+07
+schur time cost: 1.18597
+iter: 8 , chi= 4.90213e+06 , Lambda= 1.21824e+07
+schur time cost: 1.1111
+iter: 9 , chi= 4.90213e+06 , Lambda= 8.1216e+06
+schur time cost: 1.14591
+schur time cost: 0.644105
+problem solve cost: 49.219 ms
+   makeHessian cost: 21.2857 ms
+edge factor cnt: 0
+iter: 0 , chi= 2.69181e+06 , Lambda= 500000
+schur time cost: 1.91034
+iter: 1 , chi= 2.66714e+06 , Lambda= 329650
+schur time cost: 1.25014
+schur time cost: 0.687647
+schur time cost: 0.659835
+iter: 2 , chi= 2.66277e+06 , Lambda= 879067
+schur time cost: 1.12298
+schur time cost: 0.645385
+schur time cost: 0.643219
+iter: 3 , chi= 2.66276e+06 , Lambda= 2.34418e+06
+schur time cost: 1.11953
+schur time cost: 0.647846
+schur time cost: 0.645074
+iter: 4 , chi= 2.66276e+06 , Lambda= 1.25023e+07
+schur time cost: 1.11644
+schur time cost: 0.65075
+iter: 5 , chi= 2.66276e+06 , Lambda= 1.66697e+07
+schur time cost: 1.12674
+iter: 6 , chi= 2.66276e+06 , Lambda= 1.11131e+07
+schur time cost: 1.18872
+iter: 7 , chi= 2.66276e+06 , Lambda= 7.40876e+06
+schur time cost: 1.11574
+schur time cost: 0.653396
+iter: 8 , chi= 2.66276e+06 , Lambda= 9.87834e+06
+schur time cost: 1.11428
+iter: 9 , chi= 2.66276e+06 , Lambda= 6.58556e+06
+schur time cost: 1.12753
+schur time cost: 0.652643
+problem solve cost: 50.5538 ms
+   makeHessian cost: 21.8127 ms
+edge factor cnt: 0
+iter: 0 , chi= 2.63275e+06 , Lambda= 500000
+schur time cost: 1.4727
+iter: 1 , chi= 2.6221e+06 , Lambda= 166667
+schur time cost: 1.4902
+schur time cost: 0.643502
+schur time cost: 0.646248
+iter: 2 , chi= 2.62196e+06 , Lambda= 888889
+schur time cost: 1.02748
+schur time cost: 0.648901
+schur time cost: 0.641685
+iter: 3 , chi= 2.62191e+06 , Lambda= 2.37037e+06
+schur time cost: 1.07331
+schur time cost: 0.642295
+schur time cost: 0.64568
+schur time cost: 0.641873
+iter: 4 , chi= 2.62191e+06 , Lambda= 1.01136e+08
+schur time cost: 1.13582
+iter: 5 , chi= 2.62191e+06 , Lambda= 6.74239e+07
+schur time cost: 1.02722
+iter: 6 , chi= 2.62191e+06 , Lambda= 4.49492e+07
+schur time cost: 1.06594
+iter: 7 , chi= 2.62191e+06 , Lambda= 2.99662e+07
+schur time cost: 1.11236
+iter: 8 , chi= 2.62191e+06 , Lambda= 1.99774e+07
+schur time cost: 1.11536
+iter: 9 , chi= 2.62191e+06 , Lambda= 1.33183e+07
+schur time cost: 1.07459
+problem solve cost: 55.0183 ms
+   makeHessian cost: 20.3745 ms
+edge factor cnt: 0
+iter: 0 , chi= 2.52284e+06 , Lambda= 500000
+schur time cost: 1.53379
+iter: 1 , chi= 2.50974e+06 , Lambda= 333333
+schur time cost: 1.47077
+schur time cost: 0.80775
+iter: 2 , chi= 2.49441e+06 , Lambda= 222222
+schur time cost: 1.13702
+schur time cost: 0.696035
+schur time cost: 0.640413
+schur time cost: 0.641014
+iter: 3 , chi= 2.49394e+06 , Lambda= 4.74074e+06
+schur time cost: 1.13267
+schur time cost: 0.641513
+iter: 4 , chi= 2.49394e+06 , Lambda= 6.32099e+06
+schur time cost: 1.13375
+schur time cost: 0.969672
+schur time cost: 0.641367
+iter: 5 , chi= 2.49394e+06 , Lambda= 3.37119e+07
+schur time cost: 1.12753
+schur time cost: 0.641059
+iter: 6 , chi= 2.49394e+06 , Lambda= 4.49492e+07
+schur time cost: 1.12056
+iter: 7 , chi= 2.49394e+06 , Lambda= 2.99662e+07
+schur time cost: 1.13664
+schur time cost: 0.640703
+iter: 8 , chi= 2.49394e+06 , Lambda= 3.99549e+07
+schur time cost: 1.12231
+iter: 9 , chi= 2.49394e+06 , Lambda= 2.66366e+07
+schur time cost: 1.11925
+problem solve cost: 50.7508 ms
+   makeHessian cost: 21.5221 ms
+edge factor cnt: 361
+iter: 0 , chi= 3798.92 , Lambda= 500000
+schur time cost: 1.67207
+iter: 1 , chi= 1468.96 , Lambda= 333333
+schur time cost: 1.60009
+schur time cost: 0.916503
+schur time cost: 0.673953
+iter: 2 , chi= 470.227 , Lambda= 888889
+schur time cost: 1.14741
+schur time cost: 0.645442
+schur time cost: 0.641881
+iter: 3 , chi= 456.223 , Lambda= 4.74074e+06
+schur time cost: 1.14261
+iter: 4 , chi= 449.901 , Lambda= 3.16049e+06
+schur time cost: 1.30998
+iter: 5 , chi= 446.27 , Lambda= 2.107e+06
+schur time cost: 1.13467
+iter: 6 , chi= 446.003 , Lambda= 1.40466e+06
+schur time cost: 1.11854
+schur time cost: 0.644501
+iter: 7 , chi= 443.273 , Lambda= 1.87289e+06
+schur time cost: 1.11144
+schur time cost: 0.649284
+iter: 8 , chi= 441.951 , Lambda= 2.49718e+06
+schur time cost: 1.13594
+schur time cost: 0.643106
+iter: 9 , chi= 441.503 , Lambda= 3.32957e+06
+schur time cost: 1.1138
+schur time cost: 0.645159
+problem solve cost: 50.0056 ms
+   makeHessian cost: 21.3831 ms
+edge factor cnt: 0
+iter: 0 , chi= 3.56652e+06 , Lambda= 500000
+schur time cost: 1.64722
+schur time cost: 0.816657
+iter: 1 , chi= 3.55587e+06 , Lambda= 654475
+schur time cost: 1.4323
+schur time cost: 0.647535
+iter: 2 , chi= 3.55459e+06 , Lambda= 872633
+schur time cost: 1.13149
+iter: 3 , chi= 3.55419e+06 , Lambda= 581756
+schur time cost: 1.11295
+schur time cost: 0.645512
+iter: 4 , chi= 3.55415e+06 , Lambda= 775674
+schur time cost: 1.34386
+schur time cost: 0.646592
+iter: 5 , chi= 3.55403e+06 , Lambda= 1.03423e+06
+schur time cost: 1.11614
+schur time cost: 0.644891
+schur time cost: 0.642893
+iter: 6 , chi= 3.554e+06 , Lambda= 2.75795e+06
+schur time cost: 1.16686
+schur time cost: 0.644765
+schur time cost: 0.643058
+iter: 7 , chi= 3.554e+06 , Lambda= 1.47091e+07
+schur time cost: 1.12251
+iter: 8 , chi= 3.554e+06 , Lambda= 9.80605e+06
+schur time cost: 1.22309
+schur time cost: 0.648693
+iter: 9 , chi= 3.554e+06 , Lambda= 1.30747e+07
+schur time cost: 1.13997
+problem solve cost: 52.7757 ms
+   makeHessian cost: 23.4183 ms
+edge factor cnt: 0
+iter: 0 , chi= 3.03629e+06 , Lambda= 500000
+schur time cost: 1.24776
+iter: 1 , chi= 2.98676e+06 , Lambda= 230123
+schur time cost: 1.47312
+schur time cost: 0.857199
+iter: 2 , chi= 2.98426e+06 , Lambda= 306831
+schur time cost: 1.24649
+schur time cost: 0.648354
+iter: 3 , chi= 2.98211e+06 , Lambda= 409107
+schur time cost: 1.11243
+schur time cost: 0.649137
+iter: 4 , chi= 2.98199e+06 , Lambda= 545477
+schur time cost: 1.11155
+schur time cost: 0.647145
+iter: 5 , chi= 2.98184e+06 , Lambda= 727302
+schur time cost: 1.13212
+schur time cost: 0.651343
+iter: 6 , chi= 2.98173e+06 , Lambda= 969736
+schur time cost: 1.11732
+schur time cost: 0.647028
+iter: 7 , chi= 2.98169e+06 , Lambda= 919675
+schur time cost: 1.12778
+schur time cost: 0.647431
+schur time cost: 0.661059
+iter: 8 , chi= 2.98169e+06 , Lambda= 4.90493e+06
+schur time cost: 1.30157
+schur time cost: 0.657727
+iter: 9 , chi= 2.98169e+06 , Lambda= 6.53991e+06
+schur time cost: 1.10933
+schur time cost: 0.646556
+problem solve cost: 52.3933 ms
+   makeHessian cost: 23.3546 ms
+edge factor cnt: 0
+iter: 0 , chi= 5.72193e+06 , Lambda= 500000
+schur time cost: 1.27511
+iter: 1 , chi= 5.71525e+06 , Lambda= 333333
+schur time cost: 1.48191
+schur time cost: 0.878997
+schur time cost: 0.876478
+iter: 2 , chi= 5.71399e+06 , Lambda= 888889
+schur time cost: 1.31355
+schur time cost: 0.648653
+schur time cost: 0.644346
+iter: 3 , chi= 5.71399e+06 , Lambda= 2.37037e+06
+schur time cost: 1.12289
+schur time cost: 0.645227
+schur time cost: 0.650518
+iter: 4 , chi= 5.71399e+06 , Lambda= 1.2642e+07
+schur time cost: 1.1189
+iter: 5 , chi= 5.71399e+06 , Lambda= 8.42798e+06
+schur time cost: 1.11037
+schur time cost: 0.650606
+iter: 6 , chi= 5.71399e+06 , Lambda= 1.12373e+07
+schur time cost: 1.13172
+schur time cost: 0.64729
+iter: 7 , chi= 5.71399e+06 , Lambda= 1.49831e+07
+schur time cost: 1.13284
+iter: 8 , chi= 5.71399e+06 , Lambda= 9.98872e+06
+schur time cost: 1.11915
+schur time cost: 0.646219
+iter: 9 , chi= 5.71399e+06 , Lambda= 1.33183e+07
+schur time cost: 1.13201
+problem solve cost: 49.809 ms
+   makeHessian cost: 20.6866 ms
+edge factor cnt: 361
+iter: 0 , chi= 12133.2 , Lambda= 500000
+schur time cost: 1.33981
+iter: 1 , chi= 11026.7 , Lambda= 333333
+schur time cost: 1.49367
+schur time cost: 0.643991
+iter: 2 , chi= 7402.92 , Lambda= 444444
+schur time cost: 1.13778
+schur time cost: 0.644868
+iter: 3 , chi= 3793.59 , Lambda= 592593
+schur time cost: 1.12517
+schur time cost: 0.642706
+iter: 4 , chi= 1813.03 , Lambda= 790123
+schur time cost: 1.13164
+schur time cost: 0.643098
+iter: 5 , chi= 927.893 , Lambda= 1.0535e+06
+schur time cost: 1.11532
+schur time cost: 0.650982
+iter: 6 , chi= 594.577 , Lambda= 1.40466e+06
+schur time cost: 1.11254
+schur time cost: 0.643613
+iter: 7 , chi= 511.517 , Lambda= 1.87289e+06
+schur time cost: 1.13312
+schur time cost: 0.644557
+iter: 8 , chi= 495.553 , Lambda= 2.49718e+06
+schur time cost: 1.13196
+schur time cost: 0.642973
+iter: 9 , chi= 489.301 , Lambda= 3.32957e+06
+schur time cost: 1.11572
+schur time cost: 0.643092
+problem solve cost: 49.8084 ms
+   makeHessian cost: 21.6475 ms
+edge factor cnt: 0
+iter: 0 , chi= 2.41734e+06 , Lambda= 500000
+schur time cost: 1.67367
+schur time cost: 0.881631
+iter: 1 , chi= 2.39756e+06 , Lambda= 333333
+schur time cost: 1.3834
+schur time cost: 0.648478
+schur time cost: 0.64647
+iter: 2 , chi= 2.39637e+06 , Lambda= 888889
+schur time cost: 1.15973
+schur time cost: 0.648
+schur time cost: 0.64603
+iter: 3 , chi= 2.39635e+06 , Lambda= 2.37037e+06
+schur time cost: 1.16222
+schur time cost: 0.779261
+schur time cost: 0.645928
+iter: 4 , chi= 2.39635e+06 , Lambda= 1.04452e+07
+schur time cost: 1.15376
+schur time cost: 0.64692
+iter: 5 , chi= 2.39635e+06 , Lambda= 1.3927e+07
+schur time cost: 1.15332
+schur time cost: 0.648455
+iter: 6 , chi= 2.39635e+06 , Lambda= 1.85693e+07
+schur time cost: 1.14724
+iter: 7 , chi= 2.39635e+06 , Lambda= 1.23795e+07
+schur time cost: 1.15221
+schur time cost: 0.647846
+iter: 8 , chi= 2.39635e+06 , Lambda= 1.6506e+07
+schur time cost: 1.16083
+iter: 9 , chi= 2.39635e+06 , Lambda= 1.1004e+07
+schur time cost: 1.14082
+schur time cost: 0.647237
+problem solve cost: 55.4832 ms
+   makeHessian cost: 23.6405 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.97858e+06 , Lambda= 500000
+schur time cost: 1.1144
+iter: 1 , chi= 1.95733e+06 , Lambda= 333333
+schur time cost: 1.1537
+schur time cost: 0.711803
+iter: 2 , chi= 1.94918e+06 , Lambda= 444444
+schur time cost: 1.08135
+schur time cost: 0.647198
+iter: 3 , chi= 1.94782e+06 , Lambda= 592593
+schur time cost: 1.03176
+schur time cost: 0.648765
+iter: 4 , chi= 1.94741e+06 , Lambda= 790123
+schur time cost: 1.09651
+schur time cost: 0.649649
+schur time cost: 0.653567
+iter: 5 , chi= 1.94732e+06 , Lambda= 2.107e+06
+schur time cost: 1.07503
+schur time cost: 0.648564
+schur time cost: 0.648736
+iter: 6 , chi= 1.94732e+06 , Lambda= 7.78873e+06
+schur time cost: 1.01185
+schur time cost: 0.658445
+iter: 7 , chi= 1.94732e+06 , Lambda= 1.0385e+07
+schur time cost: 1.09936
+iter: 8 , chi= 1.94731e+06 , Lambda= 6.92331e+06
+schur time cost: 1.12528
+schur time cost: 0.649701
+iter: 9 , chi= 1.94731e+06 , Lambda= 9.23108e+06
+schur time cost: 1.07586
+schur time cost: 0.647388
+problem solve cost: 58.2248 ms
+   makeHessian cost: 19.6925 ms
+edge factor cnt: 361
+iter: 0 , chi= 4342.26 , Lambda= 500000
+schur time cost: 1.24165
+schur time cost: 0.639583
+schur time cost: 0.642826
+iter: 1 , chi= 655.661 , Lambda= 1.33333e+06
+schur time cost: 1.13281
+schur time cost: 0.637686
+schur time cost: 0.636785
+iter: 2 , chi= 594.618 , Lambda= 6.66712e+06
+schur time cost: 1.13217
+schur time cost: 0.636697
+iter: 3 , chi= 593.902 , Lambda= 8.8895e+06
+schur time cost: 1.13028
+schur time cost: 0.637638
+iter: 4 , chi= 593.221 , Lambda= 1.18527e+07
+schur time cost: 1.11323
+schur time cost: 0.642518
+iter: 5 , chi= 592.975 , Lambda= 1.58036e+07
+schur time cost: 1.10739
+schur time cost: 0.637183
+iter: 6 , chi= 592.851 , Lambda= 2.10714e+07
+schur time cost: 1.13124
+iter: 7 , chi= 592.813 , Lambda= 1.40476e+07
+schur time cost: 1.11176
+schur time cost: 0.638442
+iter: 8 , chi= 592.719 , Lambda= 1.87301e+07
+schur time cost: 1.11024
+iter: 9 , chi= 592.71 , Lambda= 1.24868e+07
+schur time cost: 1.14
+schur time cost: 0.637215
+problem solve cost: 49.4916 ms
+   makeHessian cost: 22.948 ms
+edge factor cnt: 0
+iter: 0 , chi= 142391 , Lambda= 500000
+schur time cost: 1.73442
+schur time cost: 0.916825
+iter: 1 , chi= 128897 , Lambda= 666667
+schur time cost: 1.38891
+schur time cost: 0.738166
+iter: 2 , chi= 125948 , Lambda= 888889
+schur time cost: 1.14156
+schur time cost: 0.648788
+iter: 3 , chi= 124848 , Lambda= 1.18519e+06
+schur time cost: 1.12655
+schur time cost: 0.645135
+iter: 4 , chi= 124351 , Lambda= 1.58025e+06
+schur time cost: 1.1259
+schur time cost: 0.644304
+iter: 5 , chi= 124254 , Lambda= 2.107e+06
+schur time cost: 1.13692
+schur time cost: 0.645464
+iter: 6 , chi= 124225 , Lambda= 2.80933e+06
+schur time cost: 1.11492
+schur time cost: 0.654072
+iter: 7 , chi= 124215 , Lambda= 3.74577e+06
+schur time cost: 1.11603
+schur time cost: 0.647405
+iter: 8 , chi= 124212 , Lambda= 4.99436e+06
+schur time cost: 1.131
+schur time cost: 0.64594
+schur time cost: 0.643453
+iter: 9 , chi= 124212 , Lambda= 2.66366e+07
+schur time cost: 1.19315
+schur time cost: 0.643995
+schur time cost: 0.64273
+schur time cost: 0.64342
+problem solve cost: 56.0744 ms
+   makeHessian cost: 21.8607 ms
+edge factor cnt: 361
+iter: 0 , chi= 26596 , Lambda= 500000
+schur time cost: 1.22854
+schur time cost: 0.650994
+iter: 1 , chi= 20231.2 , Lambda= 666667
+schur time cost: 1.20382
+schur time cost: 0.651085
+iter: 2 , chi= 12419.2 , Lambda= 888889
+schur time cost: 1.12287
+schur time cost: 0.645112
+iter: 3 , chi= 4653.24 , Lambda= 1.18519e+06
+schur time cost: 1.19192
+schur time cost: 0.646647
+iter: 4 , chi= 1484.6 , Lambda= 1.58025e+06
+schur time cost: 1.1408
+schur time cost: 0.644693
+iter: 5 , chi= 837.594 , Lambda= 2.107e+06
+schur time cost: 1.12057
+schur time cost: 0.644966
+iter: 6 , chi= 659.134 , Lambda= 2.80933e+06
+schur time cost: 1.15322
+schur time cost: 0.650828
+iter: 7 , chi= 609.164 , Lambda= 3.74577e+06
+schur time cost: 1.11806
+schur time cost: 0.661121
+iter: 8 , chi= 595.897 , Lambda= 4.99436e+06
+schur time cost: 1.12684
+schur time cost: 0.645627
+iter: 9 , chi= 587.774 , Lambda= 6.65915e+06
+schur time cost: 1.12406
+schur time cost: 0.774665
+problem solve cost: 50.4927 ms
+   makeHessian cost: 21.1294 ms
+edge factor cnt: 0
+iter: 0 , chi= 55851.6 , Lambda= 500000
+schur time cost: 1.58745
+iter: 1 , chi= 31092.8 , Lambda= 333333
+schur time cost: 1.44078
+iter: 2 , chi= 22272.9 , Lambda= 222222
+schur time cost: 1.22138
+schur time cost: 0.644707
+iter: 3 , chi= 15400.1 , Lambda= 296296
+schur time cost: 1.13652
+schur time cost: 0.648519
+schur time cost: 0.640208
+iter: 4 , chi= 1549.06 , Lambda= 809740
+schur time cost: 1.11884
+schur time cost: 0.641809
+schur time cost: 0.63955
+iter: 5 , chi= 594.442 , Lambda= 2.15931e+06
+schur time cost: 1.13524
+schur time cost: 0.646875
+schur time cost: 0.640774
+iter: 6 , chi= 587.598 , Lambda= 5.75815e+06
+schur time cost: 1.12422
+schur time cost: 0.640675
+schur time cost: 0.639603
+iter: 7 , chi= 587.537 , Lambda= 3.07101e+07
+schur time cost: 1.11565
+schur time cost: 0.648146
+iter: 8 , chi= 587.531 , Lambda= 4.09468e+07
+schur time cost: 1.1127
+schur time cost: 0.642427
+iter: 9 , chi= 587.525 , Lambda= 5.45958e+07
+schur time cost: 1.13578
+schur time cost: 0.97207
+schur time cost: 0.640724
+schur time cost: 0.644988
+problem solve cost: 57.6119 ms
+   makeHessian cost: 22.9042 ms
+edge factor cnt: 361
+iter: 0 , chi= 33598 , Lambda= 500000
+schur time cost: 1.23355
+schur time cost: 0.649387
+iter: 1 , chi= 32496 , Lambda= 666667
+schur time cost: 1.1381
+schur time cost: 0.646555
+schur time cost: 0.642871
+iter: 2 , chi= 625.782 , Lambda= 1.77778e+06
+schur time cost: 1.30478
+schur time cost: 0.646198
+schur time cost: 0.650075
+iter: 3 , chi= 525.363 , Lambda= 4.74074e+06
+schur time cost: 1.12057
+schur time cost: 0.645311
+schur time cost: 0.64461
+iter: 4 , chi= 524.479 , Lambda= 2.5284e+07
+schur time cost: 0.676848
+iter: 5 , chi= 524.386 , Lambda= 1.6856e+07
+schur time cost: 0.654388
+schur time cost: 0.661912
+iter: 6 , chi= 524.269 , Lambda= 2.24746e+07
+schur time cost: 0.661034
+schur time cost: 0.648206
+schur time cost: 0.649005
+iter: 7 , chi= 524.239 , Lambda= 1.19865e+08
+schur time cost: 1.18481
+iter: 8 , chi= 524.221 , Lambda= 7.99098e+07
+schur time cost: 1.14093
+iter: 9 , chi= 524.195 , Lambda= 5.32732e+07
+schur time cost: 1.14551
+problem solve cost: 57.1425 ms
+   makeHessian cost: 22.5818 ms
+edge factor cnt: 0
+iter: 0 , chi= 773439 , Lambda= 500000
+schur time cost: 1.46865
+schur time cost: 0.813264
+iter: 1 , chi= 766823 , Lambda= 666667
+schur time cost: 1.31523
+schur time cost: 0.652121
+schur time cost: 0.641568
+iter: 2 , chi= 752023 , Lambda= 1.77778e+06
+schur time cost: 1.13579
+schur time cost: 0.642373
+schur time cost: 0.640768
+iter: 3 , chi= 751817 , Lambda= 4.74074e+06
+schur time cost: 1.12652
+schur time cost: 0.687878
+schur time cost: 0.6426
+iter: 4 , chi= 751816 , Lambda= 2.5284e+07
+schur time cost: 1.13527
+iter: 5 , chi= 751816 , Lambda= 1.6856e+07
+schur time cost: 1.11452
+schur time cost: 0.643733
+iter: 6 , chi= 751816 , Lambda= 2.24746e+07
+schur time cost: 1.30121
+iter: 7 , chi= 751816 , Lambda= 1.49831e+07
+schur time cost: 1.13949
+schur time cost: 0.645223
+iter: 8 , chi= 751815 , Lambda= 1.99774e+07
+schur time cost: 1.1082
+schur time cost: 0.642929
+iter: 9 , chi= 751815 , Lambda= 2.66366e+07
+schur time cost: 1.11288
+problem solve cost: 50.9047 ms
+   makeHessian cost: 20.9072 ms
+edge factor cnt: 361
+iter: 0 , chi= 18490.8 , Lambda= 500000
+schur time cost: 1.57318
+schur time cost: 0.872073
+schur time cost: 0.835802
+iter: 1 , chi= 1489.59 , Lambda= 1.33333e+06
+schur time cost: 1.139
+schur time cost: 0.644885
+schur time cost: 0.638346
+iter: 2 , chi= 419.694 , Lambda= 3.55556e+06
+schur time cost: 1.13012
+schur time cost: 0.641325
+schur time cost: 0.640143
+iter: 3 , chi= 405.703 , Lambda= 1.07805e+07
+schur time cost: 1.13982
+schur time cost: 0.652926
+schur time cost: 0.638754
+iter: 4 , chi= 405.34 , Lambda= 5.7496e+07
+schur time cost: 1.12142
+iter: 5 , chi= 405.24 , Lambda= 3.83307e+07
+schur time cost: 1.17956
+iter: 6 , chi= 405.155 , Lambda= 2.55538e+07
+schur time cost: 1.18947
+schur time cost: 0.682003
+iter: 7 , chi= 404.973 , Lambda= 3.40717e+07
+schur time cost: 1.10857
+iter: 8 , chi= 404.902 , Lambda= 2.27145e+07
+schur time cost: 1.10415
+schur time cost: 0.639792
+iter: 9 , chi= 404.663 , Lambda= 3.0286e+07
+schur time cost: 1.13836
+problem solve cost: 51.7937 ms
+   makeHessian cost: 21.2418 ms
+edge factor cnt: 0
+iter: 0 , chi= 1.68932e+06 , Lambda= 500000
+schur time cost: 1.67573
+schur time cost: 0.875967
+schur time cost: 0.871162
+iter: 1 , chi= 1.67606e+06 , Lambda= 1.33333e+06
+schur time cost: 1.15109
+schur time cost: 0.639083
+schur time cost: 0.6392
+iter: 2 , chi= 1.67532e+06 , Lambda= 5.56552e+06
+schur time cost: 1.14093
+iter: 3 , chi= 1.67529e+06 , Lambda= 3.71035e+06
+schur time cost: 1.13611
+schur time cost: 0.639615
+schur time cost: 0.638083
+iter: 4 , chi= 1.67528e+06 , Lambda= 1.97885e+07
+schur time cost: 1.31482
+schur time cost: 0.6402
+iter: 5 , chi= 1.67527e+06 , Lambda= 2.63847e+07
+schur time cost: 1.13527
+schur time cost: 0.638788
+iter: 6 , chi= 1.67527e+06 , Lambda= 3.51796e+07
+schur time cost: 1.14136
+schur time cost: 0.64026
+iter: 7 , chi= 1.67527e+06 , Lambda= 4.69061e+07
+schur time cost: 1.12775
+iter: 8 , chi= 1.67527e+06 , Lambda= 3.12707e+07
+schur time cost: 1.17208
+iter: 9 , chi= 1.67527e+06 , Lambda= 2.08472e+07
+schur time cost: 1.14215
+schur time cost: 0.638207
+problem solve cost: 51.7413 ms
+   makeHessian cost: 21.2125 ms
+edge factor cnt: 361
+iter: 0 , chi= 5847.12 , Lambda= 500000
+schur time cost: 1.26435
+schur time cost: 0.850386
+schur time cost: 0.917666
+iter: 1 , chi= 561.996 , Lambda= 2.12666e+06
+schur time cost: 1.61761
+schur time cost: 0.649585
+schur time cost: 0.646234
+iter: 2 , chi= 334.341 , Lambda= 5.67109e+06
+schur time cost: 1.1414
+schur time cost: 0.646834
+schur time cost: 0.649561
+iter: 3 , chi= 331.297 , Lambda= 3.02458e+07
+schur time cost: 1.13678
+iter: 4 , chi= 331.005 , Lambda= 2.01639e+07
+schur time cost: 1.17373
+schur time cost: 0.653236
+iter: 5 , chi= 330.912 , Lambda= 2.68851e+07
+schur time cost: 1.11498
+schur time cost: 0.646176
+iter: 6 , chi= 330.842 , Lambda= 3.58469e+07
+schur time cost: 1.14633
+iter: 7 , chi= 330.816 , Lambda= 2.38979e+07
+schur time cost: 1.15562
+schur time cost: 0.64683
+iter: 8 , chi= 330.754 , Lambda= 3.18639e+07
+schur time cost: 1.11766
+schur time cost: 0.649173
+schur time cost: 0.645535
+iter: 9 , chi= 330.722 , Lambda= 1.69941e+08
+schur time cost: 1.12012
+problem solve cost: 53.4581 ms
+   makeHessian cost: 23.6245 ms
+edge factor cnt: 0
+iter: 0 , chi= 5810 , Lambda= 500000
+schur time cost: 1.38969
+schur time cost: 0.880409
+schur time cost: 0.877624
+iter: 1 , chi= 3514.93 , Lambda= 2.66667e+06
+schur time cost: 1.14752
+schur time cost: 0.644556
+iter: 2 , chi= 718.896 , Lambda= 2.9271e+06
+schur time cost: 1.3183
+schur time cost: 0.644827
+schur time cost: 0.644714
+iter: 3 , chi= 354.686 , Lambda= 8.89311e+06
+schur time cost: 1.12904
+schur time cost: 0.696177
+schur time cost: 0.643297
+iter: 4 , chi= 353.448 , Lambda= 4.74299e+07
+schur time cost: 1.16833
+iter: 5 , chi= 353.408 , Lambda= 3.162e+07
+schur time cost: 1.11451
+iter: 6 , chi= 353.359 , Lambda= 2.108e+07
+schur time cost: 1.1361
+schur time cost: 0.644314
+schur time cost: 0.641835
+iter: 7 , chi= 353.278 , Lambda= 1.12427e+08
+schur time cost: 1.14423
+iter: 8 , chi= 353.255 , Lambda= 7.4951e+07
+schur time cost: 1.17543
+iter: 9 , chi= 353.224 , Lambda= 4.99673e+07
+schur time cost: 1.15458
+problem solve cost: 50.2717 ms
+   makeHessian cost: 21.0161 ms
+edge factor cnt: 361
+iter: 0 , chi= 23707.9 , Lambda= 500000
+schur time cost: 1.32871
+schur time cost: 0.852284
+iter: 1 , chi= 17915.3 , Lambda= 666667
+schur time cost: 1.35068
+schur time cost: 0.650078
+iter: 2 , chi= 9247.35 , Lambda= 888889
+schur time cost: 1.13881
+schur time cost: 0.657449
+iter: 3 , chi= 2947.2 , Lambda= 1.18519e+06
+schur time cost: 1.13271
+iter: 4 , chi= 2079.12 , Lambda= 790123
+schur time cost: 1.1394
+schur time cost: 0.6546
+iter: 5 , chi= 1848.93 , Lambda= 1.0535e+06
+schur time cost: 1.18128
+schur time cost: 0.648483
+iter: 6 , chi= 718.086 , Lambda= 1.40466e+06
+schur time cost: 1.12429
+schur time cost: 0.649056
+iter: 7 , chi= 513.735 , Lambda= 1.87289e+06
+schur time cost: 1.30235
+schur time cost: 0.64982
+iter: 8 , chi= 466.437 , Lambda= 2.49718e+06
+schur time cost: 1.14231
+schur time cost: 0.650067
+iter: 9 , chi= 445.525 , Lambda= 3.32957e+06
+schur time cost: 1.12133
+problem solve cost: 49.0002 ms
+   makeHessian cost: 21.6061 ms
+edge factor cnt: 0
+iter: 0 , chi= 28646.9 , Lambda= 500000
+schur time cost: 1.71315
+iter: 1 , chi= 11277.3 , Lambda= 333333
+schur time cost: 1.15264
+schur time cost: 0.646444
+iter: 2 , chi= 9836.38 , Lambda= 444444
+schur time cost: 1.14714
+schur time cost: 0.644801
+schur time cost: 0.644113
+iter: 3 , chi= 413.373 , Lambda= 1.18519e+06
+schur time cost: 1.13999
+schur time cost: 0.652905
+schur time cost: 0.81035
+schur time cost: 0.664879
+iter: 4 , chi= 408.607 , Lambda= 4.80649e+07
+schur time cost: 1.14886
+schur time cost: 0.64581
+schur time cost: 0.644025
+schur time cost: 0.643239
+schur time cost: 0.648641
+iter: 5 , chi= 408.607 , Lambda= 3.28123e+10
+schur time cost: 1.15008
+schur time cost: 0.646484
+schur time cost: 0.643247
+schur time cost: 0.644343
+sqrt(currentChi_) <= stopThresholdLM_
+problem solve cost: 43.0059 ms
+   makeHessian cost: 14.6158 ms
+edge factor cnt: 361
+iter: 0 , chi= 1333.02 , Lambda= 500000
+schur time cost: 1.92466
+schur time cost: 1.00296
+schur time cost: 0.732103
+iter: 1 , chi= 384.431 , Lambda= 1.33333e+06
+schur time cost: 1.14605
+schur time cost: 0.649075
+schur time cost: 0.647722
+iter: 2 , chi= 377.596 , Lambda= 7.11111e+06
+schur time cost: 1.15897
+schur time cost: 0.651458
+schur time cost: 0.647133
+iter: 3 , chi= 376.819 , Lambda= 3.79259e+07
+schur time cost: 1.1395
+iter: 4 , chi= 376.601 , Lambda= 2.5284e+07
+schur time cost: 1.15008
+schur time cost: 0.648736
+iter: 5 , chi= 376.505 , Lambda= 3.37119e+07
+schur time cost: 1.14446
+iter: 6 , chi= 376.47 , Lambda= 2.24746e+07
+schur time cost: 1.13842
+schur time cost: 0.649091
+iter: 7 , chi= 376.448 , Lambda= 2.99662e+07
+schur time cost: 1.16471
+iter: 8 , chi= 376.427 , Lambda= 1.99774e+07
+schur time cost: 1.13515
+schur time cost: 0.646953
+iter: 9 , chi= 376.394 , Lambda= 2.66366e+07
+schur time cost: 1.13858
+schur time cost: 0.648083
+problem solve cost: 51.8186 ms
+   makeHessian cost: 20.8072 ms
+edge factor cnt: 0

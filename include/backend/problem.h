@@ -3,12 +3,12 @@
 
 #define USE_OPENMP
 
-#include <unordered_map>
 #include <map>
 #include <memory>
+#include <unordered_map>
 
-#include "eigen_types.h"
 #include "edge.h"
+#include "eigen_types.h"
 #include "vertex.h"
 
 typedef unsigned long ulong;
@@ -23,8 +23,7 @@ typedef std::unordered_map<unsigned long, std::shared_ptr<Edge>> HashEdge;
 typedef std::unordered_multimap<unsigned long, std::shared_ptr<Edge>> HashVertexIdToEdge;
 
 class Problem {
-public:
-
+  public:
     /**
      * 问题的类型
      * SLAM问题还是通用的问题
@@ -33,15 +32,9 @@ public:
      * SLAM问题只接受一些特定的Vertex和Edge
      * 如果是通用问题那么hessian是稠密的，除非用户设定某些vertex为marginalized
      */
-    enum class ProblemType {
-        SLAM_PROBLEM,
-        GENERIC_PROBLEM
-    };
+    enum class ProblemType { SLAM_PROBLEM, GENERIC_PROBLEM };
 
-    enum class SolverType {
-        LM,
-        DogLeg
-    };
+    enum class SolverType { LM, DogLeg };
 
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
 
@@ -65,7 +58,7 @@ public:
      * 取得在优化中被判断为outlier部分的边，方便前端去除outlier
      * @param outlier_edges
      */
-    void GetOutlierEdges(std::vector<std::shared_ptr<Edge>> &outlier_edges);
+    void GetOutlierEdges(std::vector<std::shared_ptr<Edge>>& outlier_edges);
 
     /**
      * 求解此问题
@@ -75,29 +68,44 @@ public:
     bool Solve(int iterations = 10, SolverType solvertype = SolverType::LM);
 
     /// 边缘化一个frame和以它为host的landmark
-    bool Marginalize(std::shared_ptr<Vertex> frameVertex,
-                     const std::vector<std::shared_ptr<Vertex>> &landmarkVerticies);
+    bool Marginalize(
+        std::shared_ptr<Vertex> frameVertex, const std::vector<std::shared_ptr<Vertex>>& landmarkVerticies);
 
     bool Marginalize(const std::shared_ptr<Vertex> frameVertex);
-    bool Marginalize(const std::vector<std::shared_ptr<Vertex> > frameVertex,int pose_dim);
+    bool Marginalize(const std::vector<std::shared_ptr<Vertex>>& frameVertex, int pose_dim);
 
-    MatXX GetHessianPrior(){ return H_prior_;}
-    VecX GetbPrior(){ return b_prior_;}
-    VecX GetErrPrior(){ return err_prior_;}
-    MatXX GetJtPrior(){ return Jt_prior_inv_;}
+    MatXX GetHessianPrior() {
+        return H_prior_;
+    }
+    VecX GetbPrior() {
+        return b_prior_;
+    }
+    VecX GetErrPrior() {
+        return err_prior_;
+    }
+    MatXX GetJtPrior() {
+        return Jt_prior_inv_;
+    }
 
-    void SetHessianPrior(const MatXX& H){H_prior_ = H;}
-    void SetbPrior(const VecX& b){b_prior_ = b;}
-    void SetErrPrior(const VecX& b){err_prior_ = b;}
-    void SetJtPrior(const MatXX& J){Jt_prior_inv_ = J;}
+    void SetHessianPrior(const MatXX& H) {
+        H_prior_ = H;
+    }
+    void SetbPrior(const VecX& b) {
+        b_prior_ = b;
+    }
+    void SetErrPrior(const VecX& b) {
+        err_prior_ = b;
+    }
+    void SetJtPrior(const MatXX& J) {
+        Jt_prior_inv_ = J;
+    }
 
     void ExtendHessiansPriorSize(int dim);
 
-    //test compute prior
+    // test compute prior
     void TestComputePrior();
 
-private:
-
+  private:
     /// Solve的实现，解通用问题
     bool SolveGenericProblem(int iterations);
 
@@ -122,7 +130,7 @@ private:
     /// 更新状态变量
     void UpdateStates();
 
-    void RollbackStates(); // 有时候 update 后残差会变大，需要退回去，重来
+    void RollbackStates();  // 有时候 update 后残差会变大，需要退回去，重来
 
     /// 计算并更新Prior部分
     void ComputePrior();
@@ -163,12 +171,12 @@ private:
     bool IsGoodStepInDogLeg();
 
     /// PCG 迭代线性求解器
-    VecX PCGSolver(const MatXX &A, const VecX &b, int maxIter = -1);
-    VecX PCGSolverTest(const MatXX &A, const VecX &b, int maxIter = -1);
+    VecX PCGSolver(const MatXX& A, const VecX& b, int maxIter = -1);
+    VecX PCGSolverTest(const MatXX& A, const VecX& b, int maxIter = -1);
     double currentLambda_;
     double currentChi_;
-    double stopThresholdLM_;    // LM 迭代退出阈值条件
-    double ni_;                 //控制 Lambda 缩放大小
+    double stopThresholdLM_;  // LM 迭代退出阈值条件
+    double ni_;               //控制 Lambda 缩放大小
 
     ProblemType problemType_;
     SolverType solvertype_;
@@ -195,7 +203,7 @@ private:
     VecX b_pp_;
     MatXX H_ll_;
     VecX b_ll_;
-    VecX gradient_ ;
+    VecX gradient_;
     VecX h_sd_;
     /// all vertices
     HashVertex verticies_;
@@ -210,8 +218,8 @@ private:
     ulong ordering_poses_ = 0;
     ulong ordering_landmarks_ = 0;
     ulong ordering_generic_ = 0;
-    std::map<unsigned long, std::shared_ptr<Vertex>> idx_pose_vertices_;        // 以ordering排序的pose顶点
-    std::map<unsigned long, std::shared_ptr<Vertex>> idx_landmark_vertices_;    // 以ordering排序的landmark顶点
+    std::map<unsigned long, std::shared_ptr<Vertex>> idx_pose_vertices_;      // 以ordering排序的pose顶点
+    std::map<unsigned long, std::shared_ptr<Vertex>> idx_landmark_vertices_;  // 以ordering排序的landmark顶点
 
     // verticies need to marg. <Ordering_id_, Vertex>
     HashVertex verticies_marg_;
@@ -219,13 +227,13 @@ private:
     bool bDebug = false;
     double t_hessian_cost_ = 0.0;
     double t_PCGsovle_cost_ = 0.0;
-    double radius_; // DogLeg Trust region
+    double radius_;  // DogLeg Trust region
     double xigma_1, xigma_2, xigma_3;
     double alpha, beta;
     VecX dogleg_step_;
 };
 
-}
-}
+}  // namespace backend
+}  // namespace myslam
 
 #endif

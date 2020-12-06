@@ -15,7 +15,7 @@ using namespace std;
 using namespace cv;
 using namespace Eigen;
 
-const int nDelayTimes = 2;
+constexpr int nDelayTimes = 2;
 string sData_path = "/home/dataset/EuRoC/MH-05/mav0/";
 string sConfig_path = "../config/";
 
@@ -35,14 +35,14 @@ void PubImuData() {
     double dStampNSec = 0.0;
     Vector3d vAcc;
     Vector3d vGyr;
-    while (std::getline(fsImu, sImu_line) && !sImu_line.empty())  // read imu data
-    {
+    while (std::getline(fsImu, sImu_line) && !sImu_line.empty()) {
+        // read imu data
         std::istringstream ssImuData(sImu_line);
         ssImuData >> dStampNSec >> vGyr.x() >> vGyr.y() >> vGyr.z() >> vAcc.x() >> vAcc.y() >> vAcc.z();
         // cout << "Imu t: " << fixed << dStampNSec << " gyr: " << vGyr.transpose() << " acc: " << vAcc.transpose() <<
         // endl;
         pSystem->PubImuData(dStampNSec / 1e9, vGyr, vAcc);
-        std::this_thread::sleep_for(std::chrono::milliseconds(nDelayTimes));  // sleep 2 ms
+        // std::this_thread::sleep_for(std::chrono::milliseconds(nDelayTimes));  // sleep 2 ms
     }
     fsImu.close();
 }
@@ -78,7 +78,7 @@ void PubImageData() {
         pSystem->PubImageData(dStampNSec / 1e9, img);
         // cv::imshow("SOURCE IMAGE", img);
         // cv::waitKey(0);
-        std::this_thread::sleep_for(std::chrono::milliseconds(100 * nDelayTimes));  // sleep 2 ms
+        std::this_thread::sleep_for(std::chrono::milliseconds(1 * nDelayTimes));  // sleep 2 ms
     }
     fsImage.close();
 }
@@ -162,8 +162,8 @@ int main(int argc, char** argv) {
     thd_PubImuData.join();
     thd_PubImageData.join();
 
-    // thd_BackEnd.join();
-    // thd_Draw.join();
+    thd_Draw.join();
+    thd_BackEnd.join();
 
     cout << "main end... see you ..." << endl;
     return 0;

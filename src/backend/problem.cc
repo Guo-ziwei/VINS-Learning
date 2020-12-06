@@ -187,8 +187,9 @@ bool Problem::Solve(int iterations, SolverType solvertype) {
                 // std::cout << "iter: " << iter <<" , Lambda= " << currentLambda_ << std::endl;
                 bool oneStepSuccess = false;
                 int false_cnt = 0;
-                while (!oneStepSuccess && false_cnt < 5)  // 不断尝试 Lambda, 直到成功迭代一步
-                {
+                while (!oneStepSuccess && false_cnt < 5) {
+                    // 不断尝试 Lambda, 直到成功迭代一步
+
                     // setLambda
                     //            AddLambdatoHessianLM();
                     // 第四步，解线性方程
@@ -289,8 +290,8 @@ bool Problem::Solve(int iterations, SolverType solvertype) {
                     UpdateStatesDogleg();
                     onestepsuccess = IsGoodStepInDogLeg();
                     if (onestepsuccess) {
-                        MakeHessian();
-                        // MakeHessianAc();
+                        // MakeHessian();
+                        MakeHessianAc();
                         gradient_ = -b_;
                         false_cnt = 0;
                     } else {
@@ -308,7 +309,6 @@ bool Problem::Solve(int iterations, SolverType solvertype) {
                 last_chi_ = currentChi_;
             }
             // std::cout << "problem solve cost: " << t_solve.toc() << " ms" << std::endl;
-            std::cout << t_solve.toc() << std::endl;
             // std::cout << t_hessian_cost_ << std::endl;
             t_hessian_cost_ = 0.;
             return true;
@@ -765,7 +765,7 @@ VecX Problem::PCGSolver(const MatXX& A, const VecX& b, int maxIter) {
  *  如果某个landmark和该frame相连，但是又不想加入marg, 那就把改edge先去掉
  *
  */
-bool Problem::Marginalize(const std::vector<std::shared_ptr<Vertex>> margVertexs, int pose_dim) {
+bool Problem::Marginalize(const std::vector<std::shared_ptr<Vertex>>& margVertexs, int pose_dim) {
     SetOrdering();
     /// 找到需要 marg 的 edge, margVertexs[0] is frame, its edge contained pre-intergration
     std::vector<shared_ptr<Edge>> marg_edges = GetConnectedEdges(margVertexs[0]);
@@ -845,7 +845,7 @@ bool Problem::Marginalize(const std::vector<std::shared_ptr<Vertex>> margVertexs
         // 是对角线矩阵，它的求逆可以直接为对角线块分别求逆，如果是逆深度，对角线块为1维的，则直接为对角线的倒数，这里可以加速
         MatXX Hmm_inv(MatXX::Zero(marg_size, marg_size));
         // TODO:: use openMP
-        for (auto iter : margLandmark) {
+        for (const auto& iter : margLandmark) {
             int idx = iter.second->OrderingId() - reserve_size;
             int size = iter.second->LocalDimension();
             Hmm_inv.block(idx, idx, size, size) = Hmm.block(idx, idx, size, size).inverse();
@@ -895,7 +895,7 @@ bool Problem::Marginalize(const std::vector<std::shared_ptr<Vertex>> margVertexs
     double eps = 1e-8;
     int m2 = marg_dim;
     int n2 = reserve_size - marg_dim;  // marg pose
-    Eigen::MatrixXd Amm = 0.5 * (H_marg.block(n2, n2, m2, m2) + H_marg.block(n2, n2, m2, m2).transpose());
+    const Eigen::MatrixXd&& Amm = 0.5 * (H_marg.block(n2, n2, m2, m2) + H_marg.block(n2, n2, m2, m2).transpose());
 
     Eigen::SelfAdjointEigenSolver<Eigen::MatrixXd> saes(Amm);
     Eigen::MatrixXd Amm_inv =
@@ -904,12 +904,12 @@ bool Problem::Marginalize(const std::vector<std::shared_ptr<Vertex>> margVertexs
             .asDiagonal() *
         saes.eigenvectors().transpose();
 
-    Eigen::VectorXd bmm2 = b_marg.segment(n2, m2);
-    Eigen::MatrixXd Arm = H_marg.block(0, n2, n2, m2);
-    Eigen::MatrixXd Amr = H_marg.block(n2, 0, m2, n2);
-    Eigen::MatrixXd Arr = H_marg.block(0, 0, n2, n2);
-    Eigen::VectorXd brr = b_marg.segment(0, n2);
-    Eigen::MatrixXd tempB = Arm * Amm_inv;
+    const Eigen::VectorXd&& bmm2 = b_marg.segment(n2, m2);
+    const Eigen::MatrixXd&& Arm = H_marg.block(0, n2, n2, m2);
+    const Eigen::MatrixXd&& Amr = H_marg.block(n2, 0, m2, n2);
+    const Eigen::MatrixXd&& Arr = H_marg.block(0, 0, n2, n2);
+    const Eigen::VectorXd&& brr = b_marg.segment(0, n2);
+    const Eigen::MatrixXd&& tempB = Arm * Amm_inv;
     H_prior_ = Arr - tempB * Amr;
     b_prior_ = brr - tempB * bmm2;
 
@@ -923,9 +923,9 @@ bool Problem::Marginalize(const std::vector<std::shared_ptr<Vertex>> margVertexs
     Jt_prior_inv_ = S_inv_sqrt.asDiagonal() * saes2.eigenvectors().transpose();
     err_prior_ = -Jt_prior_inv_ * b_prior_;
 
-    MatXX J = S_sqrt.asDiagonal() * saes2.eigenvectors().transpose();
+    const MatXX&& J = S_sqrt.asDiagonal() * saes2.eigenvectors().transpose();
     H_prior_ = J.transpose() * J;
-    MatXX tmp_h = MatXX((H_prior_.array().abs() > 1e-9).select(H_prior_.array(), 0));
+    const MatXX&& tmp_h = MatXX((H_prior_.array().abs() > 1e-9).select(H_prior_.array(), 0));
     H_prior_ = tmp_h;
 
     // std::cout << "my marg b prior: " <<b_prior_.rows()<<" norm: "<< b_prior_.norm() << std::endl;

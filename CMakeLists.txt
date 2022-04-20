@@ -5,7 +5,7 @@ set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_FLAGS "-std=c++17")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -fopenmp ${SSE_FLAGS} -msse4.2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fopenmp ${SSE_FLAGS} -msse4.2")
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 find_package(Eigen3 REQUIRED)
@@ -70,6 +70,11 @@ ADD_LIBRARY(MyVio SHARED
     src/backend/imu_integration.cc
     )
 
+ADD_LIBRARY(ORB SHARED
+    src/ORBextractor.cpp
+)
+target_link_libraries(ORB ${OpenCV_LIBS} )
+
 if(OpenMP_CXX_FOUND)
   target_link_libraries(MyVio 
   ${OpenMP_CXX_LIBRARIES}
@@ -99,3 +104,5 @@ target_link_libraries(sim_test
 add_executable(testCurveFitting test/CurveFitting.cpp)
 target_link_libraries(testCurveFitting MyVio)
 
+add_executable(ORBtest test/ORBtest.cpp)
+target_link_libraries(ORBtest ORB)

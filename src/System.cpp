@@ -11,6 +11,16 @@ System::System(string sConfig_file_) : bStart_backend(true) {
 
     cout << "1 System() sConfig_file: " << sConfig_file << endl;
     readParameters(sConfig_file);
+    float scale_factor = 1.2;
+    int levels = 8;
+    int threshold_FAST = 30;
+    int min_threshold_FAST = 7;
+    ORB::ORBWrapper orb =
+        std::make_shared<ORB::ORBextractor>(MAX_CNT, scale_factor, levels, threshold_FAST, min_threshold_FAST);
+    for (int i = 0; i < NUM_OF_CAM; i++) {
+        /* code */
+        trackerData[i].init(orb);
+    }
 
     trackerData[0].readIntrinsicParameter(sConfig_file);
 

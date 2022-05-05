@@ -45,6 +45,10 @@ add_library(camera_model SHARED
 
 target_link_libraries(camera_model ${Boost_LIBRARIES} ${OpenCV_LIBS} ${CERES_LIBRARIES})
 
+ADD_LIBRARY(ORB SHARED
+    src/ORBextractor.cpp
+)
+target_link_libraries(ORB ${OpenCV_LIBS} )
 
 ADD_LIBRARY(MyVio SHARED
     src/System.cpp
@@ -70,24 +74,21 @@ ADD_LIBRARY(MyVio SHARED
     src/backend/imu_integration.cc
     )
 
-ADD_LIBRARY(ORB SHARED
-    src/ORBextractor.cpp
-)
-target_link_libraries(ORB ${OpenCV_LIBS} )
+
 
 if(OpenMP_CXX_FOUND)
   target_link_libraries(MyVio 
   ${OpenMP_CXX_LIBRARIES}
-  ${OpenCV_LIBS}  
   ${CERES_LIBRARIES}
   ${Pangolin_LIBRARIES}
-  camera_model)
+  camera_model
+  ORB)
 else(OpenMP_CXX_FOUND)
   target_link_libraries(MyVio  
-    ${OpenCV_LIBS}  
     ${CERES_LIBRARIES}
     ${Pangolin_LIBRARIES}
-    camera_model)
+    camera_model
+    ORB)
 endif()
 
 

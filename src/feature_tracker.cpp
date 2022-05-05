@@ -3,7 +3,7 @@
 int FeatureTracker::n_id = 0;
 
 bool inBorder(const cv::Point2f& pt) {
-    const int BORDER_SIZE = 1;
+    constexpr int BORDER_SIZE = 1;
     int img_x = cvRound(pt.x);
     int img_y = cvRound(pt.y);
     return BORDER_SIZE <= img_x && img_x < COL - BORDER_SIZE && BORDER_SIZE <= img_y && img_y < ROW - BORDER_SIZE;
@@ -26,6 +26,10 @@ void reduceVector(vector<int>& v, vector<uchar> status) {
 }
 
 FeatureTracker::FeatureTracker() {}
+
+void FeatureTracker::init(const ORB::ORBWrapper orb_wrapper) {
+    orb_ptr = orb_wrapper;
+}
 
 void FeatureTracker::setMask() {
     if (FISHEYE)
@@ -87,6 +91,7 @@ void FeatureTracker::readImage(const cv::Mat& _img, double _cur_time) {
     }
 
     forw_pts.clear();
+    std::cout << "current points number: " << cur_pts.size() << std::endl;
 
     if (cur_pts.size() > 0) {
         TicToc t_o;
@@ -116,7 +121,7 @@ void FeatureTracker::readImage(const cv::Mat& _img, double _cur_time) {
         setMask();
         // ROS_DEBUG("set mask costs %fms", t_m.toc());
 
-        // ROS_DEBUG("detect feature begins");
+        std::cout << "detect feature begins" << std::endl;
         TicToc t_t;
         int n_max_cnt = MAX_CNT - static_cast<int>(forw_pts.size());
         if (n_max_cnt > 0) {
@@ -126,7 +131,9 @@ void FeatureTracker::readImage(const cv::Mat& _img, double _cur_time) {
                 cout << "mask type wrong " << endl;
             if (mask.size() != forw_img.size())
                 cout << "wrong size " << endl;
-            cv::goodFeaturesToTrack(forw_img, n_pts, MAX_CNT - forw_pts.size(), 0.01, MIN_DIST, mask);
+            // cv::goodFeaturesToTrack(forw_img, n_pts, MAX_CNT - forw_pts.size(), 0.01, MIN_DIST, mask);
+            orb_ptr->ComputeORB(forw_img, mask, n_pts, descriptors);
+            std::cout << "detect features: " << n_pts.size() << std::endl;
         } else
             n_pts.clear();
         // ROS_DEBUG("detect feature costs: %fms", t_t.toc());
@@ -165,7 +172,7 @@ void FeatureTracker::rejectWithF() {
 
         vector<uchar> status;
         cv::findFundamentalMat(un_cur_pts, un_forw_pts, cv::FM_RANSAC, F_THRESHOLD, 0.99, status);
-        int size_a = cur_pts.size();
+        // int size_a = cur_pts.size();
         reduceVector(prev_pts, status);
         reduceVector(cur_pts, status);
         reduceVector(forw_pts, status);

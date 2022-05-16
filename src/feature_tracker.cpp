@@ -29,6 +29,7 @@ FeatureTracker::FeatureTracker() {}
 
 void FeatureTracker::init(const ORB::ORBWrapper orb_wrapper) {
     orb_ptr = orb_wrapper;
+    matcher = cv::DescriptorMatcher::create("BruteForce-Hamming");
 }
 
 void FeatureTracker::setMask() {
@@ -98,7 +99,6 @@ void FeatureTracker::readImage(const cv::Mat& _img, double _cur_time) {
         vector<uchar> status;
         vector<float> err;
         cv::calcOpticalFlowPyrLK(cur_img, forw_img, cur_pts, forw_pts, status, err, cv::Size(21, 21), 3);
-
         for (int i = 0; i < int(forw_pts.size()); i++)
             if (status[i] && !inBorder(forw_pts[i]))
                 status[i] = 0;
@@ -132,7 +132,7 @@ void FeatureTracker::readImage(const cv::Mat& _img, double _cur_time) {
             if (mask.size() != forw_img.size())
                 cout << "wrong size " << endl;
             // cv::goodFeaturesToTrack(forw_img, n_pts, MAX_CNT - forw_pts.size(), 0.01, MIN_DIST, mask);
-            orb_ptr->ComputeORB(forw_img, mask, n_pts, descriptors);
+            orb_ptr->ComputeORB(forw_img, mask, n_pts, cur_descriptors);
             std::cout << "detect features: " << n_pts.size() << std::endl;
         } else
             n_pts.clear();
@@ -145,6 +145,7 @@ void FeatureTracker::readImage(const cv::Mat& _img, double _cur_time) {
     }
     prev_img = cur_img;
     prev_pts = cur_pts;
+    cur_descriptors = forw_descriptors;
     prev_un_pts = cur_un_pts;
     cur_img = forw_img;
     cur_pts = forw_pts;
@@ -268,4 +269,29 @@ void FeatureTracker::undistortedPoints() {
         }
     }
     prev_un_pts_map = cur_un_pts_map;
+}
+
+void FeatureTracker::findMatchPoints() {
+    std::vector<cv::DMatch> matches, good_matches;
+    matcher->match(cur_descriptors, forw_descriptors, matches);
+    std::vector<cv::KeyPoint> keypoints1, keypoints2;
+    cv::KeyPoint::convert(cur_pts, keypoints1);
+    cv::KeyPoint::convert(forw_pts, keypoints2);
+    gms_matcher gms(keypoints1, cur_img.size(), keypoints2, forw_img.size(), matches);
+    std::vector<uchar> inliers;
+    int num_inliners = gms.GetInlierMask(inliers, true, true);
+    std::cout << "number of good match by gms: " << num_inliners << std::endl;
+    // collect matches
+    for (size_t i = 0; i < inliers.size(); ++i) {
+        if (inliers[i] == 1) {
+            good_matches.push_back(matches[i]);
+        }
+    }
+    std::vector<int> queryidxs(good_matches.size()), trainidxs(good_matches.size());
+    for (size_t i = 0; i < good_matches.size(); i++) {
+        queryidxs[i] = good_matches[i].queryIdx;
+        trainidxs[i] = good_matches[i].trainIdx;
+    }
+    cv::KeyPoint::convert(keypoints1, cur_pts, queryidxs);
+    cv::KeyPoint::convert(keypoints2, forw_pts, trainidxs);
 }

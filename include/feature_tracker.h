@@ -12,6 +12,7 @@
 #include "camodocal/camera_models/CameraFactory.h"
 #include "camodocal/camera_models/CataCamera.h"
 #include "camodocal/camera_models/PinholeCamera.h"
+#include "gms_matcher.h"
 #include "parameters.h"
 #include "utility/tic_toc.h"
 
@@ -46,8 +47,10 @@ class FeatureTracker {
 
     void undistortedPoints();
 
+    void findMatchPoints();
+
     cv::Mat mask;
-    cv::Mat descriptors;
+    cv::Mat forw_descriptors, cur_descriptors;
     cv::Mat fisheye_mask;
     cv::Mat prev_img, cur_img, forw_img;
     vector<cv::Point2f> n_pts;
@@ -62,5 +65,6 @@ class FeatureTracker {
     double cur_time;
     double prev_time;
     ORB::ORBWrapper orb_ptr;
+    cv::Ptr<cv::DescriptorMatcher> matcher;
     static int n_id;
 };

@@ -50,6 +50,11 @@ ADD_LIBRARY(ORB SHARED
 )
 target_link_libraries(ORB ${OpenCV_LIBS} )
 
+ADD_LIBRARY(GMS SHARED
+    src/gms_matcher.cpp
+)
+target_link_libraries(GMS ${OpenCV_LIBS} )
+
 ADD_LIBRARY(MyVio SHARED
     src/System.cpp
     src/parameters.cpp
@@ -82,13 +87,15 @@ if(OpenMP_CXX_FOUND)
   ${CERES_LIBRARIES}
   ${Pangolin_LIBRARIES}
   camera_model
-  ORB)
+  ORB
+  GMS)
 else(OpenMP_CXX_FOUND)
   target_link_libraries(MyVio  
     ${CERES_LIBRARIES}
     ${Pangolin_LIBRARIES}
     camera_model
-    ORB)
+    ORB
+    GMS)
 endif()
 
 
@@ -106,4 +113,4 @@ add_executable(testCurveFitting test/CurveFitting.cpp)
 target_link_libraries(testCurveFitting MyVio)
 
 add_executable(ORBtest test/ORBtest.cpp)
-target_link_libraries(ORBtest ORB)
+target_link_libraries(ORBtest ORB GMS)

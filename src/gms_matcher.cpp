@@ -1,5 +1,8 @@
 #include "../include/gms_matcher.h"
 
+using namespace std;
+using namespace cv;
+
 int gms_matcher::GetInlierMask(vector<unsigned char>& vbInliers, bool WithScale, bool WithRotation) {
     int max_inlier = 0;
 

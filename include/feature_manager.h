@@ -49,7 +49,6 @@ class FeaturePerId {
     int used_num;
     bool is_outlier;
     bool is_margin;
-    double estimated_depth;
     double estimated_depth_inverse;
     int solve_flag;  // 0 haven't solve yet; 1 solve succ; 2 solve fail;
 
@@ -59,7 +58,6 @@ class FeaturePerId {
         : feature_id(_feature_id),
           start_frame(_start_frame),
           used_num(0),
-          estimated_depth(-1.0),
           estimated_depth_inverse(-1.0),
           solve_flag(0) {}
 

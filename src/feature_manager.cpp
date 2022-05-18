@@ -119,9 +119,10 @@ void FeatureManager::setDepth(const VectorXd& x) {
             continue;
 
         it_per_id.estimated_depth = 1.0 / x(++feature_index);
+        it_per_id.estimated_depth_inverse = x(++feature_index);
         // ROS_INFO("feature id %d , start_frame %d, depth %f ", it_per_id->feature_id, it_per_id-> start_frame,
         // it_per_id->estimated_depth);
-        if (it_per_id.estimated_depth < 0) {
+        if (it_per_id.estimated_depth_inverse < 0) {
             it_per_id.solve_flag = 2;
         } else
             it_per_id.solve_flag = 1;
@@ -143,6 +144,7 @@ void FeatureManager::clearDepth(const VectorXd& x) {
         if (!(it_per_id.used_num >= 2 && it_per_id.start_frame < WINDOW_SIZE - 2))
             continue;
         it_per_id.estimated_depth = 1.0 / x(++feature_index);
+        it_per_id.estimated_depth_inverse = x(++feature_index);
     }
 }
 
@@ -154,7 +156,8 @@ VectorXd FeatureManager::getDepthVector() {
         if (!(it_per_id.used_num >= 2 && it_per_id.start_frame < WINDOW_SIZE - 2))
             continue;
 #if 1
-        dep_vec(++feature_index) = 1. / it_per_id.estimated_depth;
+        // dep_vec(++feature_index) = 1. / it_per_id.estimated_depth;
+        dep_vec(++feature_index) = it_per_id.estimated_depth_inverse;
 #else
         dep_vec(++feature_index) = it_per_id->estimated_depth;
 #endif
@@ -168,7 +171,7 @@ void FeatureManager::triangulate(Vector3d Ps[], Vector3d tic[], Matrix3d ric[]) 
         if (!(it_per_id.used_num >= 2 && it_per_id.start_frame < WINDOW_SIZE - 2))
             continue;
 
-        if (it_per_id.estimated_depth > 0)
+        if (it_per_id.estimated_depth_inverse > 0)
             continue;
         int imu_i = it_per_id.start_frame, imu_j = imu_i - 1;
 
@@ -206,10 +209,12 @@ void FeatureManager::triangulate(Vector3d Ps[], Vector3d tic[], Matrix3d ric[]) 
         // it_per_id->estimated_depth = svd_V[2] / svd_V[3];
 
         it_per_id.estimated_depth = svd_method;
+        it_per_id.estimated_depth_inverse = 1.0 / svd_method;
         // it_per_id->estimated_depth = INIT_DEPTH;
 
-        if (it_per_id.estimated_depth < 0.1) {
+        if (it_per_id.estimated_depth_inverse > 10.0) {
             it_per_id.estimated_depth = INIT_DEPTH;
+            it_per_id.estimated_depth_inverse = 1.0 / INIT_DEPTH;
         }
     }
 }
@@ -241,14 +246,18 @@ void FeatureManager::removeBackShiftDepth(
                 feature.erase(it);
                 continue;
             } else {
-                Eigen::Vector3d pts_i = uv_i * it->estimated_depth;
+                // Eigen::Vector3d pts_i = uv_i * it->estimated_depth;
+                Eigen::Vector3d pts_i = uv_i / it->estimated_depth_inverse;
                 Eigen::Vector3d w_pts_i = marg_R * pts_i + marg_P;
                 Eigen::Vector3d pts_j = new_R.transpose() * (w_pts_i - new_P);
                 double dep_j = pts_j(2);
-                if (dep_j > 0)
+                if (dep_j > 0) {
                     it->estimated_depth = dep_j;
-                else
+                    it->estimated_depth_inverse = 1 / dep_j;
+                } else {
                     it->estimated_depth = INIT_DEPTH;
+                    it->estimated_depth_inverse = 1 / INIT_DEPTH;
+                }
             }
         }
         // remove tracking-lost feature after marginalize

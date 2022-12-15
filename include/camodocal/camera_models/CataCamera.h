@@ -101,6 +101,7 @@ class CataCamera : public Camera {
     //%output p
     //%output J
 
+    void undistortion(const Eigen::Vector2d& p, Eigen::Vector2d& p_u) const;
     void undistToPlane(const Eigen::Vector2d& p_u, Eigen::Vector2d& p) const;
     //%output p
 

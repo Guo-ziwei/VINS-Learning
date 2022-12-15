@@ -123,7 +123,7 @@ class OCAMCamera : public Camera {
     //                  Eigen::Matrix<double,2,3>& J) const;
     //%output p
     //%output J
-
+    void undistortion(const Eigen::Vector2d& p, Eigen::Vector2d& p_u) const;
     void undistToPlane(const Eigen::Vector2d& p_u, Eigen::Vector2d& p) const;
     //%output p
 

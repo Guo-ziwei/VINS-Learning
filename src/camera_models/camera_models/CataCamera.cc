@@ -603,6 +603,15 @@ CataCamera::spaceToPlane(const Eigen::Vector3d& P, Eigen::Vector2d& p,
  * \param p_u 2D point coordinates
  * \return image point coordinates
  */
+void CataCamera::undistortion(const Eigen::Vector2d& p, Eigen::Vector2d& p_u) const {
+    p_u = p;
+}
+/**
+ * \brief Projects an undistorted 2D point p_u to the image plane
+ *
+ * \param p_u 2D point coordinates
+ * \return image point coordinates
+ */
 void CataCamera::undistToPlane(const Eigen::Vector2d& p_u, Eigen::Vector2d& p) const {
     Eigen::Vector2d p_d;
 

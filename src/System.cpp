@@ -375,6 +375,19 @@ void System::ProcessBackEnd() {
                          << " " << q_wi.y() << " " << q_wi.z() << " " << q_wi.w() << endl;
                 // cout<<dStamp<<" "<<p_wi.x()<<" "<<p_wi.y()<<" "<<p_wi.z()<<" "<<q_wi.x()<<" "<<q_wi.y()<<"
                 // "<<q_wi.z()<<" "<<q_wi.w()<<"/n";
+                for (const auto& it_per_id : estimator.f_manager.feature) {
+                    const auto used_num = it_per_id.feature_per_frame.size();
+                    if (!(used_num >= 2 && it_per_id.start_frame < WINDOW_SIZE - 2))
+                        continue;
+                    if (it_per_id.start_frame > WINDOW_SIZE * 3.0 / 4.0 || it_per_id.solve_flag != 1)
+                        continue;
+                    auto start_frame = it_per_id.start_frame;
+                    Eigen::Vector3d pts_i = it_per_id.feature_per_frame[0].point * it_per_id.estimated_depth;
+                    Eigen::Vector3d w_pts_i =
+                        estimator.Rs[start_frame] * (estimator.ric[0] * pts_i + estimator.tic[0]) +
+                        estimator.Ps[start_frame];
+                    estimator.point_cloud.push_back(w_pts_i);
+                }
             }
         }
         m_estimator.unlock();
@@ -433,6 +446,14 @@ void System::Draw() {
             for (int i = 0; i < WINDOW_SIZE + 1; ++i) {
                 Vector3d p_wi = estimator.Ps[i];
                 glVertex3d(p_wi[0], p_wi[1], p_wi[2]);
+            }
+            glEnd();
+            glPointSize(3);
+            glColor3f(0, 1, 0);
+            glBegin(GL_POINTS);
+            for (size_t i = 0; i < estimator.point_cloud.size(); i++) {
+                Vector3d points = estimator.point_cloud[i];
+                glVertex3d(points[0], points[1], points[2]);
             }
             glEnd();
         }

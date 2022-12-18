@@ -22,7 +22,7 @@ string sData_path = "/home/dataset/EuRoC/MH-05/mav0/";
 std::shared_ptr<System> simSystem;
 
 void PubImuData() {
-  std::string imu_data_file = sConfig_path + "imu_data_noise1.txt";
+  std::string imu_data_file = sConfig_path + "imu_data.txt";
   cout << "1 PubImuData start imu_data_file: " << imu_data_file << endl;
   ifstream fsimu;
   fsimu.open(imu_data_file.c_str());
@@ -114,8 +114,8 @@ int main(int argc, char **argv)
 	thd_PubImuData.join();
 	thd_PubImageData.join();
 
-	// thd_BackEnd.join();
-	// thd_Draw.join();
+	thd_BackEnd.join();
+	thd_Draw.join();
 
 	cout << "main end... see you ..." << endl;
 	return 0;

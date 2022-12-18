@@ -149,22 +149,31 @@ void FeatureTracker::rejectWithF() {
     if (forw_pts.size() >= 8) {
         // ROS_DEBUG("FM ransac begins");
         TicToc t_f;
-        vector<cv::Point2f> un_cur_pts(cur_pts.size()), un_forw_pts(forw_pts.size());
-        for (unsigned int i = 0; i < cur_pts.size(); i++) {
-            Eigen::Vector3d tmp_p;
-            m_camera->liftProjective(Eigen::Vector2d(cur_pts[i].x, cur_pts[i].y), tmp_p);
-            tmp_p.x() = FOCAL_LENGTH * tmp_p.x() / tmp_p.z() + COL / 2.0;
-            tmp_p.y() = FOCAL_LENGTH * tmp_p.y() / tmp_p.z() + ROW / 2.0;
-            un_cur_pts[i] = cv::Point2f(tmp_p.x(), tmp_p.y());
+        // vector<cv::Point2f> un_cur_pts(cur_pts.size()), un_forw_pts(forw_pts.size());
+        // for (unsigned int i = 0; i < cur_pts.size(); i++) {
+        //     Eigen::Vector3d tmp_p;
+        //     m_camera->liftProjective(Eigen::Vector2d(cur_pts[i].x, cur_pts[i].y), tmp_p);
+        //     tmp_p.x() = FOCAL_LENGTH * tmp_p.x() / tmp_p.z() + COL / 2.0;
+        //     tmp_p.y() = FOCAL_LENGTH * tmp_p.y() / tmp_p.z() + ROW / 2.0;
+        //     un_cur_pts[i] = cv::Point2f(tmp_p.x(), tmp_p.y());
 
-            m_camera->liftProjective(Eigen::Vector2d(forw_pts[i].x, forw_pts[i].y), tmp_p);
-            tmp_p.x() = FOCAL_LENGTH * tmp_p.x() / tmp_p.z() + COL / 2.0;
-            tmp_p.y() = FOCAL_LENGTH * tmp_p.y() / tmp_p.z() + ROW / 2.0;
-            un_forw_pts[i] = cv::Point2f(tmp_p.x(), tmp_p.y());
+        //     m_camera->liftProjective(Eigen::Vector2d(forw_pts[i].x, forw_pts[i].y), tmp_p);
+        //     tmp_p.x() = FOCAL_LENGTH * tmp_p.x() / tmp_p.z() + COL / 2.0;
+        //     tmp_p.y() = FOCAL_LENGTH * tmp_p.y() / tmp_p.z() + ROW / 2.0;
+        //     un_forw_pts[i] = cv::Point2f(tmp_p.x(), tmp_p.y());
+        // }
+        vector<cv::Point2f> _un_cur_pts(cur_pts.size()), _un_forw_pts(forw_pts.size());
+        for (size_t i = 0; i < cur_pts.size(); i++) {
+            Eigen::Vector2d tmp_p;
+            m_camera->undistortion(Eigen::Vector2d(cur_pts[i].x, cur_pts[i].y), tmp_p);
+            _un_cur_pts[i] = cv::Point2f(tmp_p.x(), tmp_p.y());
+            m_camera->undistortion(Eigen::Vector2d(forw_pts[i].x, forw_pts[i].y), tmp_p);
+            _un_forw_pts[i] = cv::Point2f(tmp_p.x(), tmp_p.y());
         }
 
         vector<uchar> status;
-        cv::findFundamentalMat(un_cur_pts, un_forw_pts, cv::FM_RANSAC, F_THRESHOLD, 0.99, status);
+        // auto F = cv::findFundamentalMat(un_cur_pts, un_forw_pts, cv::FM_RANSAC, F_THRESHOLD, 0.99, status);
+        auto _F = cv::findFundamentalMat(_un_cur_pts, _un_forw_pts, cv::FM_RANSAC, F_THRESHOLD, 0.99, status);
         int size_a = cur_pts.size();
         reduceVector(prev_pts, status);
         reduceVector(cur_pts, status);
@@ -172,6 +181,7 @@ void FeatureTracker::rejectWithF() {
         reduceVector(cur_un_pts, status);
         reduceVector(ids, status);
         reduceVector(track_cnt, status);
+        // std::cout << F << "\n" << _F <<"\n"<< std::endl;
         // ROS_DEBUG("FM ransac: %d -> %lu: %f", size_a, forw_pts.size(), 1.0 * forw_pts.size() / size_a);
         // ROS_DEBUG("FM ransac costs: %fms", t_f.toc());
     }

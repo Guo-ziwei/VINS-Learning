@@ -553,6 +553,49 @@ void PinholeCamera::distortion(const Eigen::Vector2d& p_u, Eigen::Vector2d& d_u)
         p_u(1) * rad_dist_u + 2.0 * p2 * mxy_u + p1 * (rho2_u + 2.0 * my2_u);
 }
 
+
+/**
+ * \brief Apply distortion to input point (from the normalised plane)
+ *
+ * \param p point on the image plane
+ * \param p_u undistorted coordinates of point on the image plane
+ * \return to obtain the distorted point: p_d = p_u + d_u
+ */
+void PinholeCamera::undistortion(const Eigen::Vector2d& p, Eigen::Vector2d& p_u) const {
+    double mx_d, my_d, mx2_d, mxy_d, my2_d, mx_u, my_u;
+    double rho2_d, rho4_d, radDist_d, Dx_d, Dy_d, inv_denom_d;
+    double k1 = mParameters.k1();
+    double k2 = mParameters.k2();
+    double p1 = mParameters.p1();
+    double p2 = mParameters.p2();
+    double cx = mParameters.cx();
+    double cy = mParameters.cy();
+    // Lift points to normalised plane
+    mx_d = m_inv_K11 * p(0) + m_inv_K13;
+    my_d = m_inv_K22 * p(1) + m_inv_K23;
+    mx_u = mx_d;
+    my_u = my_d;
+    // Apply inverse distortion model
+    // proposed by Heikkila
+    for (size_t i = 0; i < 8; i++) {
+        mx2_d = mx_d * mx_d;
+        my2_d = my_d * my_d;
+        mxy_d = mx_d * my_d;
+        rho2_d = mx2_d + my2_d;
+        rho4_d = rho2_d * rho2_d;
+        Dx_d = 2 * p1 * mxy_d + p2 * (rho2_d + 2 * mx2_d);
+        Dy_d = p1 * (rho2_d + 2 * my2_d) + 2 * p2 * mxy_d;
+        inv_denom_d = 1.0 / (1 + k1 * rho2_d + k2 * rho4_d);
+
+        mx_d = (mx_u - Dx_d) * inv_denom_d;
+        my_d = (my_u - Dy_d) * inv_denom_d;
+    }
+
+    mx_u = mParameters.fx() * mx_d + cx;
+    my_u= mParameters.fy() * my_d + cy;
+    p_u << mx_u, my_u;
+}
+
 /**
  * \brief Apply distortion to input point (from the normalised plane)
  *        and calculate Jacobian

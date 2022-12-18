@@ -70,6 +70,11 @@ ADD_LIBRARY(MyVio SHARED
     src/backend/imu_integration.cc
     )
 
+ADD_LIBRARY(ORB SHARED
+    src/ORBextractor.cpp
+)
+target_link_libraries(ORB ${OpenCV_LIBS} )
+
 if(OpenMP_CXX_FOUND)
   target_link_libraries(MyVio 
   ${OpenMP_CXX_LIBRARIES}
@@ -99,3 +104,5 @@ target_link_libraries(sim_test
 add_executable(testCurveFitting test/CurveFitting.cpp)
 target_link_libraries(testCurveFitting MyVio)
 
+add_executable(ORBtest test/ORBtest.cpp)
+target_link_libraries(ORBtest ORB)

@@ -367,7 +367,7 @@ bool Estimator::visualInitialAlign() {
     f_manager.setRic(ric);
     f_manager.triangulate(Ps, &(TIC_TMP[0]), &(RIC[0]));
 
-    double s = (x.tail<1>())(0);
+    double s = (x.tail<1>())(0);  // scale
     for (int i = 0; i <= WINDOW_SIZE; i++) {
         pre_integrations[i]->repropagate(Vector3d::Zero(), Bgs[i]);
     }
@@ -385,7 +385,7 @@ bool Estimator::visualInitialAlign() {
         it_per_id.used_num = it_per_id.feature_per_frame.size();
         if (!(it_per_id.used_num >= 2 && it_per_id.start_frame < WINDOW_SIZE - 2))
             continue;
-        it_per_id.estimated_depth *= s;
+        it_per_id.estimated_depth_inverse *= s;
     }
 
     Matrix3d R0 = Utility::g2R(g);

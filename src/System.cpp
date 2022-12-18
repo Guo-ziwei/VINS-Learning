@@ -214,14 +214,14 @@ void System::PubImageData(double dStampSec, Mat& img) {
 
 #ifdef __linux__
     cv::Mat show_img;
-    cv::cvtColor(img, show_img, CV_GRAY2RGB);
+    cv::cvtColor(img, show_img, cv::COLOR_GRAY2RGB);
     if (SHOW_TRACK) {
         for (unsigned int j = 0; j < trackerData[0].cur_pts.size(); j++) {
             double len = min(1.0, 1.0 * trackerData[0].track_cnt[j] / WINDOW_SIZE);
             cv::circle(show_img, trackerData[0].cur_pts[j], 2, cv::Scalar(255 * (1 - len), 0, 255 * len), 2);
         }
 
-        cv::namedWindow("IMAGE", CV_WINDOW_AUTOSIZE);
+        cv::namedWindow("IMAGE", cv::WINDOW_AUTOSIZE);
         cv::imshow("IMAGE", show_img);
         cv::waitKey(1);
     }

@@ -527,7 +527,7 @@ void ORBextractor::computePyramid(cv::Mat image) {
         image_pyramid[i] = temp(cv::Rect(EDGE_THRESHOLD, EDGE_THRESHOLD, sz.width, sz.height));
         // Compute the resized image
         if (i != 0) {
-            cv::resize(image_pyramid[i - 1], image_pyramid[i], sz, 0, 0, CV_INTER_LINEAR);
+            cv::resize(image_pyramid[i - 1], image_pyramid[i], sz, 0, 0, cv::INTER_LINEAR);
             cv::copyMakeBorder(
                 image_pyramid[i], temp, EDGE_THRESHOLD, EDGE_THRESHOLD, EDGE_THRESHOLD, EDGE_THRESHOLD,
                 cv::BORDER_REFLECT101 + cv::BORDER_ISOLATED);

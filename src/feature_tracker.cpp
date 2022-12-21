@@ -279,18 +279,16 @@ void FeatureTracker::findMatchPoints() {
     cv::KeyPoint::convert(forw_pts, keypoints2);
     gms_matcher gms(keypoints1, cur_img.size(), keypoints2, forw_img.size(), matches);
     std::vector<uchar> inliers;
+    std::vector<int> queryidxs, trainidxs;
     int num_inliners = gms.GetInlierMask(inliers, true, true);
     std::cout << "number of good match by gms: " << num_inliners << std::endl;
     // collect matches
     for (size_t i = 0; i < inliers.size(); ++i) {
         if (inliers[i] == 1) {
             good_matches.push_back(matches[i]);
+            queryidxs.push_back(matches[i].queryIdx);
+            trainidxs.push_back(matches[i].trainIdx);
         }
-    }
-    std::vector<int> queryidxs(good_matches.size()), trainidxs(good_matches.size());
-    for (size_t i = 0; i < good_matches.size(); i++) {
-        queryidxs[i] = good_matches[i].queryIdx;
-        trainidxs[i] = good_matches[i].trainIdx;
     }
     cv::KeyPoint::convert(keypoints1, cur_pts, queryidxs);
     cv::KeyPoint::convert(keypoints2, forw_pts, trainidxs);

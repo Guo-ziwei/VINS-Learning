@@ -732,7 +732,9 @@ VecX Problem::PCGSolver(const MatXX& A, const VecX& b, int maxIter) {
     int rows = b.rows();
     int n = maxIter < 0 ? rows : maxIter;
     VecX x(VecX::Zero(rows));
-    MatXX M_inv = A.diagonal().asDiagonal().inverse();
+    // MatXX M_inv = A.diagonal().asDiagonal().inverse();
+    VecX diag_inv = A.diagonal().cwiseInverse();
+    MatXX M_inv = diag_inv.asDiagonal();
     VecX r0(b);  // initial r = b - A*0 = b
     VecX z0 = M_inv * r0;
     VecX p(z0);

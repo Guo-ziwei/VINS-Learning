@@ -20,7 +20,7 @@ void IMUIntegration::Propagate(double dt, const Vec3& acc, const Vec3& gyr) {
     sum_dt_ += dt;
 
     // update jacobians w.r.t. bg and ba
-    dr_dbg_ -= delta_r_.inverse().matrix() * SO3d::JacobianR(((gyr - bg_) * dt)) * dt;
+    dr_dbg_ -= delta_r_.inverse().matrix() * SO3d::rightJacobian(((gyr - bg_) * dt)) * dt;
     dv_dba_ -= delta_r_.matrix() * dt;
     dv_dbg_ -= delta_r_.matrix() * SO3d::hat(acc - ba_) * dr_dbg_ * dt;
     dp_dba_ += dv_dba_ * dt - 0.5 * delta_r_.matrix() * dt * dt;
@@ -28,7 +28,7 @@ void IMUIntegration::Propagate(double dt, const Vec3& acc, const Vec3& gyr) {
 
     // propagate noise
     A_.block<3, 3>(0, 0) = dR.inverse().matrix();
-    B_.block<3, 3>(0, 0) = SO3d::JacobianR(dR.log());
+    B_.block<3, 3>(0, 0) = SO3d::rightJacobian(dR.log());
 
     A_.block<3, 3>(3, 0) = -delta_r_.matrix() * SO3d::hat(acc - ba_) * dt;
     A_.block<3, 3>(3, 3) = Mat33::Identity();
